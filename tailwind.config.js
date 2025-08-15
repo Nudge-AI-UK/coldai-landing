@@ -48,6 +48,13 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Chess-inspired colors
+        chess: {
+          dark: "#1a1a2e",
+          board: "#16213e",
+          accent: "#7c3aed",
+          gold: "#fbbf24",
+        }
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -144,6 +151,56 @@ export default {
             "offset-distance": "100%",
           },
         },
+        "meteor": {
+          "0%": { transform: "rotate(215deg) translateX(0)", opacity: "1" },
+          "70%": { opacity: "1" },
+          "100%": {
+            transform: "rotate(215deg) translateX(-500px)",
+            opacity: "0",
+          },
+        },
+        "line-shadow": {
+          "from": {
+            backgroundPosition: "-200% 0",
+          },
+          "to": {
+            backgroundPosition: "200% 0",
+          },
+        },
+        orbit: {
+          "0%": {
+            transform: "rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg)",
+          },
+          "100%": {
+            transform: "rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg)",
+          },
+        },
+        "pulse-scale": {
+          "0%, 100%": {
+            transform: "scale(1)",
+            opacity: "0.8",
+          },
+          "50%": {
+            transform: "scale(1.1)",
+            opacity: "1",
+          },
+        },
+        shimmer: {
+          "from": {
+            "backgroundPosition": "0 0",
+          },
+          "to": {
+            "backgroundPosition": "-200% 0",
+          },
+        },
+        "marquee": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+        "marquee-vertical": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(calc(-100% - var(--gap)))" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -158,6 +215,13 @@ export default {
         grid: "grid 15s linear infinite",
         rainbow: "rainbow var(--speed, 2s) infinite linear",
         "border-beam": "border-beam var(--duration) linear infinite",
+        meteor: "meteor 5s linear infinite",
+        "line-shadow": "line-shadow 3s linear infinite",
+        orbit: "orbit calc(var(--duration)*1s) linear infinite",
+        "pulse-scale": "pulse-scale 3s ease-in-out infinite",
+        shimmer: "shimmer 2s linear infinite",
+        marquee: "marquee var(--duration) linear infinite",
+        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
       },
     },
   },

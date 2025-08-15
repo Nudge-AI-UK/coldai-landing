@@ -1,110 +1,199 @@
 import { useState } from 'react'
 import { toast } from 'sonner'
-import { ShimmerButton } from './ui/shimmer-button'
+import { supabase } from '@/lib/supabase'
 import { TextAnimate } from './ui/text-animate'
-import { registerInterest } from '@/lib/supabase'
-import { Send, Sparkles } from 'lucide-react'
-import { AnimatedBeam } from './ui/animated-beam'
+import { ShimmerButton } from './ui/shimmer-button'
+import { BorderBeam } from './ui/border-beam'
+import { SparklesText } from './ui/sparkles-text'
+import { Send, CheckCircle, AlertCircle } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 export default function EmailCapture() {
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
     if (!email) {
-      toast.error('Please enter your email')
+      toast.error('Please enter your email address')
       return
     }
-    
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      toast.error('Please enter a valid email address')
+      return
+    }
+
     setLoading(true)
-    
+
     try {
-      const { success, error } = await registerInterest(email)
-      
-      if (success) {
-        toast.success('Welcome aboard! We\'ll be in touch soon.')
-        setEmail('')
+      const { error } = await supabase
+        .from('waitlist')
+        .insert([{ 
+          email,
+          created_at: new Date().toISOString()
+        }])
+
+      if (error) {
+        if (error.code === '23505') {
+          toast.error('You\'re already on the waitlist!')
+        } else {
+          throw error
+        }
       } else {
-        toast.error(error || 'Something went wrong. Please try again.')
+        setSubmitted(true)
+        toast.success('Welcome to Cold AI! Check your email for next steps.')
+        setEmail('')
       }
     } catch (error) {
-      toast.error('Failed to register. Please try again.')
+      console.error('Error:', error)
+      toast.error('Something went wrong. Please try again.')
     } finally {
       setLoading(false)
     }
   }
 
   return (
-    <div id="register" className="relative py-24 px-4 overflow-hidden">
-      {/* Animated background beams */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <AnimatedBeam className="absolute" />
+    <section id="register" className="relative py-32 px-4 overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-purple-950/20 to-black" />
+      
+      {/* Animated grid pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `linear-gradient(#7c3aed 1px, transparent 1px), linear-gradient(90deg, #7c3aed 1px, transparent 1px)`,
+          backgroundSize: '50px 50px',
+          animation: 'grid 20s linear infinite',
+        }} />
       </div>
       
-      <div className="max-w-3xl mx-auto text-center relative z-10">
-        <div className="mb-8 flex justify-center">
-          <div className="p-3 rounded-full bg-purple-500/10 border border-purple-500/20">
-            <Sparkles className="w-8 h-8 text-purple-400" />
-          </div>
-        </div>
-        
-        <TextAnimate
-          animation="blurIn"
-          by="word"
-          as="h2"
-          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-purple-300 to-blue-400 bg-clip-text text-transparent"
-        >
-          Ready to Make Your Move?
-        </TextAnimate>
-        
-        <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
-          Join forward-thinking sales teams who are transforming their LinkedIn outreach strategy
-        </p>
-        
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-          <div className="relative flex-1">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              className="w-full px-6 py-4 rounded-full bg-purple-900/30 border border-purple-500/30 text-white placeholder:text-purple-300/50 focus:outline-none focus:border-purple-400/50 focus:bg-purple-900/40 transition-all duration-300"
-              disabled={loading}
-            />
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600/20 to-blue-600/20 blur-xl -z-10" />
-          </div>
+      <div className="relative z-10 max-w-4xl mx-auto">
+        <div className="relative group">
+          {/* Glow effect */}
+          <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-3xl blur-2xl opacity-20 group-hover:opacity-30 transition duration-1000" />
           
-          <ShimmerButton
-            type="submit"
-            disabled={loading}
-            shimmerColor="#fff"
-            background="linear-gradient(135deg, #8B5CF6 0%, #6D28D9 50%, #5B21B6 100%)"
-            className="px-8 py-4 font-semibold text-lg shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-shadow duration-300"
-          >
-            <span className="flex items-center gap-2">
-              {loading ? 'Joining...' : 'Join Waitlist'}
-              <Send className="w-5 h-5" />
-            </span>
-          </ShimmerButton>
-        </form>
-        
-        <div className="mt-8 flex items-center justify-center gap-8 text-sm text-gray-400">
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            <span>No spam ever</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            <span>Early bird pricing</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            <span>Cancel anytime</span>
+          {/* Card */}
+          <div className="relative bg-black/60 backdrop-blur-xl border border-gray-800 rounded-3xl p-12 md:p-16">
+            <BorderBeam size={300} duration={15} />
+            
+            <div className="text-center space-y-8">
+              {/* Header */}
+              <div className="space-y-4">
+                <TextAnimate
+                  animation="blurInUp"
+                  by="word"
+                  className="text-sm uppercase tracking-[0.3em] text-purple-400 font-semibold"
+                >
+                  Limited Early Access
+                </TextAnimate>
+                
+                <SparklesText
+                  className="text-4xl md:text-6xl font-bold"
+                  colors={{ first: "#c084fc", second: "#60a5fa" }}
+                  sparklesCount={6}
+                >
+                  Claim Your Advantage
+                </SparklesText>
+                
+                <TextAnimate
+                  animation="fadeIn"
+                  by="text"
+                  delay={0.3}
+                  className="text-xl text-gray-400 max-w-2xl mx-auto"
+                >
+                  Be among the first to revolutionise your LinkedIn outreach. 
+                  Early access members get lifetime discounts and priority support.
+                </TextAnimate>
+              </div>
+              
+              {/* Form */}
+              {!submitted ? (
+                <form onSubmit={handleSubmit} className="space-y-6 max-w-md mx-auto">
+                  <div className="relative group">
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Enter your email address"
+                      className={cn(
+                        "w-full px-6 py-4 rounded-xl",
+                        "bg-gray-900/50 backdrop-blur-xl",
+                        "border border-gray-700 focus:border-purple-500",
+                        "text-white placeholder-gray-500",
+                        "transition-all duration-300",
+                        "focus:outline-none focus:ring-2 focus:ring-purple-500/20"
+                      )}
+                      disabled={loading}
+                    />
+                    <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-600/20 to-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  </div>
+                  
+                  <ShimmerButton
+                    type="submit"
+                    disabled={loading}
+                    className="w-full shadow-2xl"
+                    background="linear-gradient(110deg,#000103 45%,#7c3aed 48%,#60a5fa 52%,#000103 55%)"
+                    borderRadius="12px"
+                  >
+                    <span className="relative z-10 flex items-center justify-center gap-2 text-white font-semibold text-lg px-8 py-4">
+                      {loading ? (
+                        <span className="animate-pulse">Joining...</span>
+                      ) : (
+                        <>
+                          Get Early Access
+                          <Send className="w-5 h-5" />
+                        </>
+                      )}
+                    </span>
+                  </ShimmerButton>
+                </form>
+              ) : (
+                <div className="space-y-6 max-w-md mx-auto">
+                  <div className="flex justify-center">
+                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center animate-pulse-scale">
+                      <CheckCircle className="w-10 h-10 text-white" />
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <h3 className="text-2xl font-bold text-white">You're In!</h3>
+                    <p className="text-gray-400">
+                      We'll notify you as soon as Cold AI launches. 
+                      Check your email for confirmation.
+                    </p>
+                  </div>
+                </div>
+              )}
+              
+              {/* Benefits */}
+              <div className="pt-8 border-t border-gray-800">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {[
+                    { icon: "🎯", text: "50% Launch Discount" },
+                    { icon: "⚡", text: "Priority Access" },
+                    { icon: "👑", text: "Lifetime Benefits" },
+                  ].map((benefit, index) => (
+                    <div key={index} className="flex items-center justify-center gap-2 text-gray-400">
+                      <span className="text-2xl">{benefit.icon}</span>
+                      <span className="text-sm">{benefit.text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Privacy note */}
+              <p className="text-xs text-gray-500 flex items-center justify-center gap-1">
+                <AlertCircle className="w-3 h-3" />
+                We respect your privacy. No spam, ever.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
