@@ -3,7 +3,8 @@ import { toast } from 'sonner'
 import { ShimmerButton } from './ui/shimmer-button'
 import { TextAnimate } from './ui/text-animate'
 import { registerInterest } from '@/lib/supabase'
-import { Send } from 'lucide-react'
+import { Send, Sparkles } from 'lucide-react'
+import { AnimatedBeam } from './ui/animated-beam'
 
 export default function EmailCapture() {
   const [email, setEmail] = useState('')
@@ -36,48 +37,73 @@ export default function EmailCapture() {
   }
 
   return (
-    <div id="register" className="relative py-24 px-4">
-      <div className="max-w-2xl mx-auto text-center">
+    <div id="register" className="relative py-24 px-4 overflow-hidden">
+      {/* Animated background beams */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <AnimatedBeam className="absolute" />
+      </div>
+      
+      <div className="max-w-3xl mx-auto text-center relative z-10">
+        <div className="mb-8 flex justify-center">
+          <div className="p-3 rounded-full bg-purple-500/10 border border-purple-500/20">
+            <Sparkles className="w-8 h-8 text-purple-400" />
+          </div>
+        </div>
+        
         <TextAnimate
           animation="blurIn"
           by="word"
           as="h2"
-          className="text-4xl md:text-5xl font-bold mb-6"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-purple-300 to-blue-400 bg-clip-text text-transparent"
         >
-          Be First to Transform Your Outreach
+          Ready to Make Your Move?
         </TextAnimate>
         
-        <p className="text-xl text-gray-400 mb-12">
-          Join the waitlist and get exclusive early access when we launch
+        <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+          Join forward-thinking sales teams who are transforming their LinkedIn outreach strategy
         </p>
         
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-            className="flex-1 px-6 py-3 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-gray-500 focus:outline-none focus:border-white/40 transition-colors"
-            disabled={loading}
-          />
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+          <div className="relative flex-1">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              className="w-full px-6 py-4 rounded-full bg-purple-900/30 border border-purple-500/30 text-white placeholder:text-purple-300/50 focus:outline-none focus:border-purple-400/50 focus:bg-purple-900/40 transition-all duration-300"
+              disabled={loading}
+            />
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600/20 to-blue-600/20 blur-xl -z-10" />
+          </div>
           
           <ShimmerButton
             type="submit"
             disabled={loading}
-            shimmerColor="#3B82F6"
-            background="linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%)"
-            className="px-8 py-3 font-semibold"
+            shimmerColor="#fff"
+            background="linear-gradient(135deg, #8B5CF6 0%, #6D28D9 50%, #5B21B6 100%)"
+            className="px-8 py-4 font-semibold text-lg shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-shadow duration-300"
           >
             <span className="flex items-center gap-2">
               {loading ? 'Joining...' : 'Join Waitlist'}
-              <Send className="w-4 h-4" />
+              <Send className="w-5 h-5" />
             </span>
           </ShimmerButton>
         </form>
         
-        <p className="mt-6 text-sm text-gray-500">
-          No spam. Unsubscribe anytime.
-        </p>
+        <div className="mt-8 flex items-center justify-center gap-8 text-sm text-gray-400">
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+            <span>No spam ever</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+            <span>Early bird pricing</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+            <span>Cancel anytime</span>
+          </div>
+        </div>
       </div>
     </div>
   )
