@@ -136,6 +136,14 @@ export default {
             "background-position": "200%",
           },
         },
+        "border-beam": {
+          "from": {
+            "offset-distance": "0%",
+          },
+          "to": {
+            "offset-distance": "100%",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -149,6 +157,7 @@ export default {
         rippling: "rippling var(--duration) ease-out",
         grid: "grid 15s linear infinite",
         rainbow: "rainbow var(--speed, 2s) infinite linear",
+        "border-beam": "border-beam var(--duration) linear infinite",
       },
     },
   },

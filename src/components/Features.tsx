@@ -1,5 +1,7 @@
 import { Brain, MessageSquare, Target, Zap } from 'lucide-react'
 import { TextAnimate } from './ui/text-animate'
+import { BorderBeam } from './ui/border-beam'
+import { MagicCard } from './ui/magic-card'
 
 const features = [
   {
@@ -33,32 +35,41 @@ export default function Features() {
             animation="slideUp"
             by="word"
             as="h2"
-            className="text-4xl md:text-5xl font-bold mb-4"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent"
           >
-            Outreach That Actually Works
+            Strategic Outreach Excellence
           </TextAnimate>
           <p className="text-xl text-gray-400">
-            Built for sales teams who value quality over quantity
+            Built for sales teams who play to win
           </p>
         </div>
         
         <div className="grid md:grid-cols-2 gap-8">
           {features.map((feature, index) => (
-            <div
+            <MagicCard
               key={index}
-              className="group relative p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300"
+              className="relative p-8 bg-gradient-to-br from-purple-900/20 to-blue-900/20 backdrop-blur-sm border-purple-500/20"
+              gradientColor="#8B5CF6"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              
-              <div className="relative">
-                <feature.icon className="w-12 h-12 mb-4 text-blue-400" />
-                <h3 className="text-2xl font-semibold mb-3">{feature.title}</h3>
-                <p className="text-gray-400 leading-relaxed">
+              <div className="relative z-10">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center mb-6">
+                  <feature.icon className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-2xl font-semibold mb-3 text-white">{feature.title}</h3>
+                <p className="text-gray-300 leading-relaxed">
                   {feature.description}
                 </p>
               </div>
-            </div>
+              <BorderBeam size={250} duration={12} delay={index * 2} />
+            </MagicCard>
           ))}
+        </div>
+        
+        {/* Chess Strategy Quote */}
+        <div className="mt-20 text-center">
+          <p className="text-2xl font-light italic text-purple-300/60">
+            "In chess, as in sales, every move counts"
+          </p>
         </div>
       </div>
     </div>
