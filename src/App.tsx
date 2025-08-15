@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Toaster } from 'sonner'
 import Hero from './components/Hero'
 import Features from './components/Features'
