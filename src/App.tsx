@@ -1,10 +1,12 @@
 import { Toaster } from 'sonner'
+import { Analytics } from '@vercel/analytics/react'
 import LandingPage from './pages/LandingPage'
 
 function App() {
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
       <LandingPage />
+      <Analytics />
       
       <Toaster 
         position="bottom-center" 
