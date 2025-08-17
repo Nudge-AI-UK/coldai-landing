@@ -1,160 +1,142 @@
-import { TextAnimate } from './ui/text-animate'
-import { AnimatedGradientText } from './ui/animated-gradient-text'
-import { Ripple } from './ui/ripple'
+import { useRef } from 'react'
+import ShimmerButton from './ui/shimmer-button'
+import AnimatedGradientText from './ui/animated-gradient-text'
 import { SparklesText } from './ui/sparkles-text'
-import { BorderBeam } from './ui/border-beam'
-import { Meteors } from './ui/meteors'
-import { FlickeringGrid } from './ui/flickering-grid'
-import { ShimmerButton } from './ui/shimmer-button'
-import { ArrowDown, ChevronRight } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import DotPattern from './ui/dot-pattern'
+import FlickeringGrid from './ui/flickering-grid'
+import GridPattern from './ui/grid-pattern'
+import TextAnimate from './ui/text-animate'
+import { ArrowRight, Play, Sparkles } from 'lucide-react'
 
-export default function Hero() {
+const Hero = () => {
+  const containerRef = useRef<HTMLDivElement>(null)
+
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4">
-      {/* Enhanced background layers */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-purple-950/20 to-black" />
-      
-      {/* Flickering grid for chess board effect */}
-      <FlickeringGrid
-        className="absolute inset-0 z-0"
-        squareSize={32}
-        gridGap={8}
-        color="#7c3aed"
-        maxOpacity={0.1}
-        flickerChance={0.02}
-      />
-      
-      {/* Meteors effect */}
-      <Meteors number={10} className="absolute inset-0" />
-      
-      {/* Ripple effect */}
-      <Ripple 
-        className="opacity-5" 
-        mainCircleOpacity={0.08} 
-        numCircles={3}
-      />
-      
-      <div className="relative z-10 text-center space-y-8 max-w-5xl mx-auto">
-        {/* Enhanced Rook Logo with animation */}
-        <div className="flex justify-center mb-12">
-          <div className="relative group">
-            {/* Animated glow */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-3xl blur-2xl opacity-40 group-hover:opacity-60 transition duration-1000 animate-pulse-scale" />
-            
-            {/* Chess piece container */}
-            <div className="relative">
-              <div className="relative w-28 h-28 bg-gradient-to-br from-purple-600 via-purple-500 to-blue-600 rounded-3xl flex items-center justify-center transform hover:scale-110 transition-all duration-500 shadow-2xl">
-                <BorderBeam size={100} duration={12} delay={0} />
-                <span className="text-6xl font-bold text-white drop-shadow-2xl">♜</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        {/* Enhanced announcement badge */}
-        <div className="inline-flex items-center justify-center">
-          <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full blur-lg opacity-20 group-hover:opacity-30 transition duration-300" />
-            <div className="relative inline-flex items-center gap-2 px-6 py-2 border border-purple-500/30 rounded-full bg-black/50 backdrop-blur-xl">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
-              </span>
-              <AnimatedGradientText
-                colorFrom="#c084fc"
-                colorTo="#60a5fa"
-                className="text-sm font-semibold tracking-wide"
-              >
-                Coming Soon • Join the Revolution
-              </AnimatedGradientText>
-            </div>
-          </div>
-        </div>
-        
-        <div className="space-y-8">
-          {/* Main headline with enhanced animation */}
-          <TextAnimate
-            animation="blurInUp"
-            by="word"
-            as="h1"
-            duration={0.5}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
-          >
-            <span className="bg-gradient-to-b from-white via-white to-gray-400 bg-clip-text text-transparent">
-              Your Strategic Move to
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden" ref={containerRef}>
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        <FlickeringGrid
+          className="z-0 absolute inset-0 [mask:radial-gradient(450px_circle_at_center,white,transparent)]"
+          squareSize={4}
+          gridGap={6}
+          color="#9333ea"
+          maxOpacity={0.1}
+          flickerChance={0.1}
+        />
+        <GridPattern
+          width={40}
+          height={40}
+          x={-12}
+          y={4}
+          className="z-0 opacity-10"
+        />
+        <DotPattern
+          className="z-0 opacity-20 [mask-image:radial-gradient(600px_circle_at_center,white,transparent)]"
+        />
+      </div>
+
+      {/* Gradient Orbs */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl opacity-20 animate-pulse" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-violet-500 rounded-full blur-3xl opacity-20 animate-pulse delay-1000" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500 rounded-full blur-3xl opacity-10" />
+
+      {/* Content */}
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-5xl mx-auto text-center">
+          {/* Badge */}
+          <AnimatedGradientText className="mb-8">
+            ✨ Launching Soon - Join the Waiting List
+          </AnimatedGradientText>
+
+          {/* Main Heading */}
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            <span className="block text-white mb-2">
+              LinkedIn Outreach
             </span>
-          </TextAnimate>
-          
-          <div className="relative">
-            <SparklesText
-              className="text-5xl md:text-7xl lg:text-8xl font-bold"
-              colors={{ first: "#c084fc", second: "#60a5fa" }}
-              sparklesCount={8}
-            >
-              Winning Outreach
-            </SparklesText>
+            <span className="block">
+              <SparklesText
+                className="inline-block"
+                colors={{ first: "#9333ea", second: "#06b6d4" }}
+              >
+                Powered by AI
+              </SparklesText>
+            </span>
+          </h1>
+
+          {/* Subheading */}
+          <div className="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
+            <TextAnimate
+              text="Generate personalised messages that get 3x more responses. Save hours while building genuine connections."
+              type="word"
+              animation="fadeIn"
+              duration={0.3}
+              delay={0.1}
+            />
           </div>
-          
-          {/* Enhanced subheadline */}
-          <TextAnimate
-            animation="fadeIn"
-            by="text"
-            delay={0.8}
-            className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light"
-          >
-            Cold AI crafts personalised LinkedIn messages that checkmate the competition. 
-            Strategic. Intelligent. Unstoppable.
-          </TextAnimate>
-        </div>
-        
-        {/* Enhanced CTA section */}
-        <div className="pt-16 space-y-6">
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
             <ShimmerButton
-              className="shadow-2xl relative group"
-              background="linear-gradient(110deg,#000103 45%,#7c3aed 48%,#60a5fa 52%,#000103 55%)"
-              borderRadius="12px"
-              onClick={() => document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' })}
+              className="px-8 py-4 text-lg font-semibold rounded-full"
+              shimmerColor="#9333ea"
+              background="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
             >
-              <span className="relative z-10 flex items-center gap-2 text-white font-semibold text-lg px-8 py-4">
+              <span className="flex items-center gap-2">
                 Get Early Access
-                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5" />
               </span>
             </ShimmerButton>
             
-            <button className="group relative px-8 py-4 text-gray-400 hover:text-white transition-all duration-300">
-              <span className="relative z-10 flex items-center gap-2 font-medium">
-                Watch Demo
-                <ArrowDown className="w-4 h-4 rotate-[-90deg] group-hover:translate-x-1 transition-transform" />
-              </span>
+            <button className="px-8 py-4 text-lg font-semibold rounded-full bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all flex items-center gap-2 group">
+              <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              Watch Demo
             </button>
           </div>
-          
-          {/* Trust indicators */}
-          <div className="flex items-center justify-center gap-8 text-sm text-gray-500">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              <span>No Credit Card Required</span>
+
+          {/* Stats */}
+          <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+            <div className="text-center">
+              <TextAnimate
+                text="10x"
+                animation="slideUp"
+                className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+              />
+              <p className="text-gray-400 mt-2">Faster Outreach</p>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              <span>Setup in 2 Minutes</span>
+            <div className="text-center">
+              <TextAnimate
+                text="3x"
+                animation="slideUp"
+                delay={0.2}
+                className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+              />
+              <p className="text-gray-400 mt-2">More Responses</p>
+            </div>
+            <div className="text-center">
+              <TextAnimate
+                text="100%"
+                animation="slideUp"
+                delay={0.4}
+                className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+              />
+              <p className="text-gray-400 mt-2">Personalised</p>
             </div>
           </div>
         </div>
       </div>
-      
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <a 
-          href="#features" 
-          className="flex flex-col items-center gap-2 text-gray-500 hover:text-purple-400 transition-colors group"
-        >
-          <span className="text-xs uppercase tracking-widest">Explore</span>
-          <ArrowDown className="w-5 h-5 animate-bounce" />
-        </a>
+
+      {/* Decorative Elements */}
+      <div className="absolute bottom-10 left-10 animate-bounce">
+        <Sparkles className="w-6 h-6 text-purple-400 opacity-50" />
       </div>
-    </div>
+      <div className="absolute top-20 right-10 animate-bounce delay-700">
+        <Sparkles className="w-8 h-8 text-pink-400 opacity-50" />
+      </div>
+      <div className="absolute top-1/2 left-10 animate-bounce delay-1000">
+        <Sparkles className="w-5 h-5 text-cyan-400 opacity-50" />
+      </div>
+    </section>
   )
 }
+
+export default Hero

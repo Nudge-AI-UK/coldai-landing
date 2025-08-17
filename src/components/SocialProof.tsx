@@ -1,155 +1,143 @@
-import { Marquee } from './ui/marquee'
-import { TextAnimate } from './ui/text-animate'
-import { cn } from '@/lib/utils'
+import Marquee from './ui/marquee'
+import TextAnimate from './ui/text-animate'
+import { Star, Quote } from 'lucide-react'
 
-const companies = [
-  { name: "Microsoft", logo: "🏢" },
-  { name: "Google", logo: "🔍" },
-  { name: "Amazon", logo: "📦" },
-  { name: "Meta", logo: "💬" },
-  { name: "Apple", logo: "🍎" },
-  { name: "Netflix", logo: "🎬" },
-  { name: "Spotify", logo: "🎵" },
-  { name: "Tesla", logo: "🚗" },
-  { name: "OpenAI", logo: "🤖" },
-  { name: "Stripe", logo: "💳" },
-]
+const SocialProof = () => {
+  const testimonials = [
+    {
+      name: "Sarah Chen",
+      role: "Sales Director",
+      company: "TechFlow Solutions",
+      content: "Cold AI transformed our outreach. We're seeing 3x more responses and closing deals faster than ever.",
+      rating: 5,
+      image: "https://i.pravatar.cc/150?img=1"
+    },
+    {
+      name: "Michael Rodriguez",
+      role: "Business Development Manager",
+      company: "GrowthLab",
+      content: "The personalisation is incredible. It's like having a team of copywriters working 24/7.",
+      rating: 5,
+      image: "https://i.pravatar.cc/150?img=2"
+    },
+    {
+      name: "Emily Watson",
+      role: "Founder",
+      company: "StartupBoost",
+      content: "I was skeptical at first, but the results speak for themselves. Our pipeline has never been fuller.",
+      rating: 5,
+      image: "https://i.pravatar.cc/150?img=3"
+    },
+    {
+      name: "David Kim",
+      role: "VP Sales",
+      company: "Enterprise Co",
+      content: "Cold AI saves our team 20+ hours per week while delivering better results. It's a game-changer.",
+      rating: 5,
+      image: "https://i.pravatar.cc/150?img=4"
+    },
+    {
+      name: "Lisa Thompson",
+      role: "Account Executive",
+      company: "SaaS Platform",
+      content: "The AI understands context so well. Messages feel genuine, not robotic. Prospects actually respond!",
+      rating: 5,
+      image: "https://i.pravatar.cc/150?img=5"
+    },
+    {
+      name: "James Wilson",
+      role: "Head of Growth",
+      company: "Digital Agency",
+      content: "We've tried every outreach tool. Cold AI is the only one that delivers consistent, quality results.",
+      rating: 5,
+      image: "https://i.pravatar.cc/150?img=6"
+    },
+  ]
 
-const testimonials = [
-  {
-    name: "Sarah Chen",
-    role: "Sales Director",
-    company: "TechCorp",
-    text: "Cold AI transformed our outreach. We're booking 3x more meetings with half the effort.",
-    rating: 5,
-  },
-  {
-    name: "Marcus Johnson",
-    role: "CEO",
-    company: "StartupHub",
-    text: "The personalisation is incredible. Prospects think we've researched them for hours.",
-    rating: 5,
-  },
-  {
-    name: "Emily Rodriguez",
-    role: "Head of Sales",
-    company: "SaaS Solutions",
-    text: "Best investment we've made. Our response rates went from 2% to 18% overnight.",
-    rating: 5,
-  },
-  {
-    name: "David Kim",
-    role: "Business Development",
-    company: "Growth Partners",
-    text: "It's like having a team of expert copywriters working 24/7. Game-changing.",
-    rating: 5,
-  },
-]
+  const ReviewCard = ({ review }: { review: typeof testimonials[0] }) => (
+    <div className="relative w-[400px] mx-4">
+      <div className="bg-gradient-to-br from-purple-900/20 to-pink-900/20 backdrop-blur-sm rounded-2xl p-6 border border-purple-500/20 hover:border-purple-500/40 transition-all group">
+        <Quote className="absolute top-4 right-4 w-8 h-8 text-purple-500/20 group-hover:text-purple-500/40 transition-colors" />
+        
+        <div className="flex gap-1 mb-4">
+          {[...Array(review.rating)].map((_, i) => (
+            <Star key={i} className="w-4 h-4 fill-yellow-500 text-yellow-500" />
+          ))}
+        </div>
+        
+        <p className="text-gray-300 mb-6 leading-relaxed">
+          "{review.content}"
+        </p>
+        
+        <div className="flex items-center gap-3">
+          <img
+            src={review.image}
+            alt={review.name}
+            className="w-12 h-12 rounded-full border-2 border-purple-500/20"
+          />
+          <div>
+            <p className="font-semibold text-white">{review.name}</p>
+            <p className="text-sm text-gray-400">
+              {review.role} at {review.company}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
 
-export default function SocialProof() {
   return (
     <section className="relative py-32 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-purple-950/5 to-black" />
-      
-      <div className="relative z-10">
-        {/* Header */}
-        <div className="text-center mb-16 px-4">
-          <TextAnimate
-            animation="blurInUp"
-            by="word"
-            className="text-sm uppercase tracking-[0.3em] text-purple-400 font-semibold mb-4"
-          >
-            Trusted by Leaders
-          </TextAnimate>
-          
-          <TextAnimate
-            animation="blurInUp"
-            by="word"
-            delay={0.2}
-            className="text-3xl md:text-5xl font-bold text-white"
-          >
-            Join the Winning Team
-          </TextAnimate>
+      <div className="container mx-auto px-6 mb-16">
+        <div className="text-center max-w-3xl mx-auto">
+          <h2 className="text-5xl font-bold mb-6">
+            <TextAnimate
+              text="Loved by Sales Teams Everywhere"
+              type="word"
+              animation="slideUp"
+            />
+          </h2>
+          <p className="text-xl text-gray-400">
+            <TextAnimate
+              text="Join thousands of professionals who've transformed their LinkedIn outreach"
+              type="word"
+              animation="fadeIn"
+              delay={0.2}
+            />
+          </p>
         </div>
+      </div>
+
+      <div className="relative">
+        <Marquee pauseOnHover className="[--duration:40s]">
+          {testimonials.map((review, index) => (
+            <ReviewCard key={index} review={review} />
+          ))}
+        </Marquee>
         
-        {/* Company logos marquee */}
-        <div className="mb-24">
-          <Marquee pauseOnHover className="[--duration:30s]">
-            {companies.map((company, index) => (
-              <div
-                key={index}
-                className="mx-8 flex items-center gap-3 px-6 py-3 rounded-full bg-gray-900/50 border border-gray-800 hover:border-purple-500/50 transition-all duration-300 group"
-              >
-                <span className="text-2xl">{company.logo}</span>
-                <span className="text-gray-400 font-medium group-hover:text-white transition-colors">
-                  {company.name}
-                </span>
-              </div>
-            ))}
-          </Marquee>
-        </div>
-        
-        {/* Testimonials */}
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={index}
-                className="relative group"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                <div className="relative bg-gray-900/50 backdrop-blur-xl border border-gray-800 rounded-2xl p-8 hover:border-purple-500/50 transition-all duration-300">
-                  {/* Stars */}
-                  <div className="flex gap-1 mb-4">
-                    {Array.from({ length: testimonial.rating }).map((_, i) => (
-                      <span key={i} className="text-yellow-500">★</span>
-                    ))}
-                  </div>
-                  
-                  {/* Quote */}
-                  <p className="text-gray-300 text-lg mb-6 italic">
-                    "{testimonial.text}"
-                  </p>
-                  
-                  {/* Author */}
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-white font-bold">
-                      {testimonial.name.split(' ').map(n => n[0]).join('')}
-                    </div>
-                    <div>
-                      <p className="text-white font-semibold">{testimonial.name}</p>
-                      <p className="text-gray-400 text-sm">
-                        {testimonial.role} at {testimonial.company}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-black to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-black to-transparent" />
+      </div>
+
+      <div className="mt-16 text-center">
+        <div className="inline-flex items-center gap-4 text-gray-400">
+          <div className="flex -space-x-2">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <img
+                key={i}
+                src={`https://i.pravatar.cc/100?img=${i + 10}`}
+                alt="User"
+                className="w-10 h-10 rounded-full border-2 border-black"
+              />
             ))}
           </div>
-        </div>
-        
-        {/* Stats */}
-        <div className="mt-24 max-w-5xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { value: "10x", label: "Response Rate" },
-              { value: "500K+", label: "Messages Sent" },
-              { value: "98%", label: "Satisfaction" },
-              { value: "2min", label: "Setup Time" },
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-b from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                  {stat.value}
-                </div>
-                <div className="text-gray-400 mt-2">{stat.label}</div>
-              </div>
-            ))}
-          </div>
+          <p className="text-sm">
+            <span className="font-semibold text-white">10,000+</span> sales professionals trust Cold AI
+          </p>
         </div>
       </div>
     </section>
   )
 }
+
+export default SocialProof
