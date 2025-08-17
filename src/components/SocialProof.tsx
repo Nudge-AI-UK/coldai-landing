@@ -1,4 +1,4 @@
-import Marquee from './ui/marquee'
+import { Marquee } from './ui/marquee'
 import TextAnimate from './ui/text-animate'
 import { Star, Quote } from 'lucide-react'
 

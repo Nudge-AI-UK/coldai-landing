@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import TextAnimate from './ui/text-animate'
-import MagicCard from './ui/magic-card'
+import { MagicCard } from './ui/magic-card'
 import { Meteors } from './ui/meteors'
 import {
   Zap,

@@ -1,4 +1,4 @@
-import AnimatedGradientText from './ui/animated-gradient-text'
+import { AnimatedGradientText } from './ui/animated-gradient-text'
 import { Sparkles, Twitter, Linkedin, Github, Mail } from 'lucide-react'
 
 const Footer = () => {
