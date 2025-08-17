@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -20,16 +20,10 @@ import {
   Users,
   Shield,
   Award,
-  ArrowRight,
-  Sparkles,
-  Brain,
-  Rocket,
-  Globe,
-  ChevronRight
+  Sparkles
 } from 'lucide-react';
 
 const LandingPage = () => {
-  const [activePricingTab, setActivePricingTab] = useState("individual");
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
 
   const features = [
