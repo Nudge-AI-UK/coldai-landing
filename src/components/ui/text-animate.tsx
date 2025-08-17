@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { motion, useInView, useAnimation, Variant } from "framer-motion";
 
 import { cn } from "@/lib/utils";
@@ -14,17 +14,47 @@ interface TextAnimateProps {
   animation?: {
     hidden: Variant;
     visible: Variant;
-  };
+  } | "slideUp" | "fadeIn" | "slideInFromLeft" | "slideInFromRight";
 }
 
-const defaultAnimation = {
-  hidden: {
-    opacity: 0,
-    y: 20,
+const animations = {
+  slideUp: {
+    hidden: {
+      opacity: 0,
+      y: 20,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+    },
   },
-  visible: {
-    opacity: 1,
-    y: 0,
+  fadeIn: {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+    },
+  },
+  slideInFromLeft: {
+    hidden: {
+      opacity: 0,
+      x: -20,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+    },
+  },
+  slideInFromRight: {
+    hidden: {
+      opacity: 0,
+      x: 20,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+    },
   },
 };
 
@@ -34,12 +64,14 @@ export const TextAnimate = ({
   duration = 0.3,
   delay = 0,
   className,
-  animation = defaultAnimation,
+  animation = "slideUp",
 }: TextAnimateProps) => {
   const controls = useAnimation();
   const textRef = useRef<HTMLSpanElement>(null);
   const isInView = useInView(textRef, { once: true, amount: 0.5 });
   const textArray = type === "word" ? text.split(" ") : text.split("");
+  
+  const animationVariants = typeof animation === "string" ? animations[animation] : animation;
 
   useEffect(() => {
     if (isInView) {
@@ -54,7 +86,7 @@ export const TextAnimate = ({
           key={index}
           initial="hidden"
           animate={controls}
-          variants={animation}
+          variants={animationVariants}
           transition={{
             duration: duration,
             delay: delay + index * 0.06,
@@ -68,6 +100,8 @@ export const TextAnimate = ({
     </span>
   );
 };
+
+export default TextAnimate;
 
 interface LetterPullupProps {
   className?: string;

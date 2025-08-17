@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React, { ReactElement, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -105,3 +105,4 @@ const Sparkle: React.FC<SparkleProps> = ({ id, x, y, color, delay, scale, lifesp
 };
 
 export default SparklesText;
+export { SparklesText };
