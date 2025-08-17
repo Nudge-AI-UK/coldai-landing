@@ -1,27 +1,19 @@
 import { Toaster } from 'sonner'
-import Hero from './components/Hero'
-import Features from './components/Features'
-import SocialProof from './components/SocialProof'
-import EmailCapture from './components/EmailCapture'
-import Footer from './components/Footer'
+import LandingPage from './pages/LandingPage'
 
 function App() {
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
-      <Hero />
-      <Features />
-      <SocialProof />
-      <EmailCapture />
-      <Footer />
+      <LandingPage />
       
       <Toaster 
         position="bottom-center" 
         richColors 
         toastOptions={{
           style: {
-            background: 'rgba(88, 28, 135, 0.9)',
+            background: 'rgba(251, 146, 60, 0.9)',
             color: 'white',
-            border: '1px solid rgba(139, 92, 246, 0.3)',
+            border: '1px solid rgba(251, 146, 60, 0.3)',
             backdropFilter: 'blur(10px)',
           },
         }}
