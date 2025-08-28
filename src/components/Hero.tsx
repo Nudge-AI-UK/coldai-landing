@@ -30,7 +30,7 @@ export default function Hero() {
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4">
       {/* Enhanced background layers */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-purple-950/20 to-black" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-orange-950/20 to-black" />
       
       {/* Flickering grid for chess board effect */}
       <FlickeringGrid
@@ -66,13 +66,13 @@ export default function Hero() {
         <div className="flex justify-center mb-8">
           <div className="relative group">
             {/* Animated glow */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-3xl blur-2xl opacity-40 group-hover:opacity-60 transition duration-1000 animate-pulse-scale" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-orange-600 to-blue-600 rounded-3xl blur-2xl opacity-40 group-hover:opacity-60 transition duration-1000 animate-pulse-scale" />
             
             {/* Chess piece container */}
             <div className="relative">
-              <div className="relative w-20 h-20 bg-gradient-to-br from-purple-600 via-purple-500 to-blue-600 rounded-3xl flex items-center justify-center transform hover:scale-110 transition-all duration-500 shadow-2xl">
+              <div className="relative w-20 h-20 bg-gradient-to-br from-orange-600 via-orange-500 to-blue-600 rounded-3xl flex items-center justify-center transform hover:scale-110 transition-all duration-500 shadow-2xl">
                 <BorderBeam size={80} duration={12} delay={0} />
-                <span className="text-4xl font-bold text-white drop-shadow-2xl">♜</span>
+                <span className="text-4xl font-bold text-white drop-shadow-2xl">♝</span>
               </div>
             </div>
           </div>
@@ -81,11 +81,11 @@ export default function Hero() {
         {/* Enhanced announcement badge */}
         <div className="inline-flex items-center justify-center">
           <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full blur-lg opacity-20 group-hover:opacity-30 transition duration-300" />
-            <div className="relative inline-flex items-center gap-2 px-6 py-2 border border-purple-500/30 rounded-full bg-black/50 backdrop-blur-xl">
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-blue-600 rounded-full blur-lg opacity-20 group-hover:opacity-30 transition duration-300" />
+            <div className="relative inline-flex items-center gap-2 px-6 py-2 border border-orange-500/30 rounded-full bg-black/50 backdrop-blur-xl">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
               </span>
               <AnimatedGradientText
                 colorFrom="#c084fc"
@@ -154,17 +154,10 @@ export default function Hero() {
               onClick={() => document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <span className="relative z-10 flex items-center gap-2 text-white font-semibold text-lg px-8 py-4">
-                Get Early Access
+                Request Access
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
             </ShimmerButton>
-            
-            <button className="group relative px-8 py-4 text-gray-400 hover:text-white transition-all duration-300">
-              <span className="relative z-10 flex items-center gap-2 font-medium">
-                Watch Demo
-                <ArrowDown className="w-4 h-4 rotate-[-90deg] group-hover:translate-x-1 transition-transform" />
-              </span>
-            </button>
           </div>
           
           {/* Trust indicators */}
@@ -175,7 +168,7 @@ export default function Hero() {
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              <span>Setup in 2 Minutes</span>
+              <span>Join The Beta</span>
             </div>
           </div>
         </div>
@@ -185,7 +178,7 @@ export default function Hero() {
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
         <a 
           href="#features" 
-          className="flex flex-col items-center gap-2 text-gray-500 hover:text-purple-400 transition-colors group"
+          className="flex flex-col items-center gap-2 text-gray-500 hover:text-orange-400 transition-colors group"
         >
           <span className="text-xs uppercase tracking-widest">Explore</span>
           <ArrowDown className="w-5 h-5 animate-bounce" />
