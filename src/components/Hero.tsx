@@ -52,18 +52,27 @@ export default function Hero() {
         numCircles={3}
       />
       
+      {/* Logo in top left */}
+      <div className="absolute top-8 left-8 z-20">
+        <img 
+          src="/logo.svg" 
+          alt="Cold AI Logo" 
+          className="h-10 w-auto hover:opacity-90 transition-opacity cursor-pointer"
+        />
+      </div>
+      
       <div className="relative z-10 text-center space-y-8 max-w-5xl mx-auto">
-        {/* Enhanced Rook Logo with animation */}
-        <div className="flex justify-center mb-12">
+        {/* Enhanced Rook Logo with animation (now smaller as secondary element) */}
+        <div className="flex justify-center mb-8">
           <div className="relative group">
             {/* Animated glow */}
             <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-3xl blur-2xl opacity-40 group-hover:opacity-60 transition duration-1000 animate-pulse-scale" />
             
             {/* Chess piece container */}
             <div className="relative">
-              <div className="relative w-28 h-28 bg-gradient-to-br from-purple-600 via-purple-500 to-blue-600 rounded-3xl flex items-center justify-center transform hover:scale-110 transition-all duration-500 shadow-2xl">
-                <BorderBeam size={100} duration={12} delay={0} />
-                <span className="text-6xl font-bold text-white drop-shadow-2xl">♜</span>
+              <div className="relative w-20 h-20 bg-gradient-to-br from-purple-600 via-purple-500 to-blue-600 rounded-3xl flex items-center justify-center transform hover:scale-110 transition-all duration-500 shadow-2xl">
+                <BorderBeam size={80} duration={12} delay={0} />
+                <span className="text-4xl font-bold text-white drop-shadow-2xl">♜</span>
               </div>
             </div>
           </div>

@@ -1,0 +1,50 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Chess King Piece -->
+  <g transform="translate(10, 10)">
+    <!-- King piece with gradient -->
+    <defs>
+      <linearGradient id="kingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#FFA500;stop-opacity:1" />
+        <stop offset="50%" style="stop-color:#FF8C00;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#FF6B00;stop-opacity:1" />
+      </linearGradient>
+      <linearGradient id="kingShade" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#FF8C00;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#FF6B00;stop-opacity:1" />
+      </linearGradient>
+    </defs>
+    
+    <!-- King shape -->
+    <path d="M20 5 L20 8 L18 8 L18 10 L22 10 L22 8 L20 8 M15 10 L25 10 L27 15 L26 20 L24 25 L16 25 L14 20 L13 15 L15 10 Z" 
+          fill="url(#kingGradient)"/>
+    
+    <!-- King crown cross -->
+    <rect x="18.5" y="2" width="3" height="8" fill="url(#kingGradient)"/>
+    <rect x="16" y="4" width="8" height="3" fill="url(#kingGradient)"/>
+    
+    <!-- Base -->
+    <rect x="12" y="25" width="16" height="3" fill="url(#kingShade)"/>
+    <path d="M10 28 L30 28 L28 32 L12 32 Z" fill="url(#kingShade)"/>
+    <rect x="8" y="32" width="24" height="3" fill="url(#kingShade)"/>
+    
+    <!-- 3D effect shadows -->
+    <path d="M20 10 L25 10 L27 15 L26 20 L24 25 L20 25 Z" 
+          fill="url(#kingShade)" opacity="0.3"/>
+  </g>
+  
+  <!-- Text "Cold" -->
+  <text x="55" y="35" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#F5F5F5">
+    Cold
+  </text>
+  
+  <!-- Text "AI" with gradient -->
+  <defs>
+    <linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FFA500;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF6B00;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <text x="145" y="35" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="url(#aiGradient)">
+    AI
+  </text>
+</svg>
