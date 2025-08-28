@@ -156,17 +156,10 @@ export default function Hero() {
               onClick={() => document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <span className="relative z-10 flex items-center gap-2 text-white font-semibold text-lg px-8 py-4">
-                Get Early Access
+                Request Access
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
             </ShimmerButton>
-            
-            <button className="group relative px-8 py-4 text-gray-400 hover:text-white transition-all duration-300">
-              <span className="relative z-10 flex items-center gap-2 font-medium">
-                Watch Demo
-                <ArrowDown className="w-4 h-4 rotate-[-90deg] group-hover:translate-x-1 transition-transform" />
-              </span>
-            </button>
           </div>
           
           {/* Trust indicators */}
