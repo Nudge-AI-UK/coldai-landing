@@ -66,11 +66,11 @@ export default function Hero() {
         <div className="flex justify-center mb-8">
           <div className="relative group">
             {/* Animated glow */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-orange-600 to-blue-600 rounded-3xl blur-2xl opacity-40 group-hover:opacity-60 transition duration-1000 animate-pulse-scale" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-orange-600 to-yellow-600 rounded-3xl blur-2xl opacity-40 group-hover:opacity-60 transition duration-1000 animate-pulse-scale" />
             
             {/* Chess piece container */}
             <div className="relative">
-              <div className="relative w-20 h-20 bg-gradient-to-br from-orange-600 via-orange-500 to-blue-600 rounded-3xl flex items-center justify-center transform hover:scale-110 transition-all duration-500 shadow-2xl">
+              <div className="relative w-20 h-20 bg-gradient-to-br from-orange-600 via-orange-500 to-yellow-600 rounded-3xl flex items-center justify-center transform hover:scale-110 transition-all duration-500 shadow-2xl">
                 <BorderBeam size={80} duration={12} delay={0} />
                 <span className="text-4xl font-bold text-white drop-shadow-2xl">♝</span>
               </div>
@@ -81,7 +81,7 @@ export default function Hero() {
         {/* Enhanced announcement badge */}
         <div className="inline-flex items-center justify-center">
           <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-blue-600 rounded-full blur-lg opacity-20 group-hover:opacity-30 transition duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-yellow-600 rounded-full blur-lg opacity-20 group-hover:opacity-30 transition duration-300" />
             <div className="relative inline-flex items-center gap-2 px-6 py-2 border border-orange-500/30 rounded-full bg-black/50 backdrop-blur-xl">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
