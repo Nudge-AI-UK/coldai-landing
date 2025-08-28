@@ -1,17 +1,12 @@
-import { Linkedin, Twitter, Mail, ChevronRight, Crown } from 'lucide-react'
+import { Linkedin, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const navigation = {
-  product: [
+  company: [
     { name: 'Features', href: '#features' },
     { name: 'Pricing', href: '#pricing' },
-    { name: 'API', href: '#api' },
-    { name: 'Integrations', href: '#integrations' },
-  ],
-  company: [
     { name: 'About', href: '#about' },
     { name: 'Blog', href: '#blog' },
-    { name: 'Careers', href: '#careers' },
     { name: 'Contact', href: '#contact' },
   ],
   legal: [
@@ -24,15 +19,8 @@ const navigation = {
     { name: 'Documentation', href: '#docs' },
     { name: 'Help Centre', href: '#help' },
     { name: 'Community', href: '#community' },
-    { name: 'Templates', href: '#templates' },
   ],
 }
-
-const socials = [
-  { name: 'LinkedIn', icon: Linkedin, href: '#' },
-  { name: 'Twitter', icon: Twitter, href: '#' },
-  { name: 'Email', icon: Mail, href: 'mailto:hello@coldai.com' },
-]
 
 export default function Footer() {
   return (
@@ -52,7 +40,7 @@ export default function Footer() {
             {/* Logo and tagline */}
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 bg-gradient-to-br from-orange-600 to-yellow-600 rounded-xl flex items-center justify-center">
-                <span className="text-2xl font-bold text-white">♜</span>
+                <span className="text-2xl font-bold text-white">♗</span>
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white">Cold AI</h3>
@@ -95,7 +83,7 @@ export default function Footer() {
           </div>
           
           {/* Navigation grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             {Object.entries(navigation).map(([category, links]) => (
               <div key={category}>
                 <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
@@ -121,43 +109,30 @@ export default function Footer() {
         {/* Bottom section */}
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center gap-6 mb-4 md:mb-0">
-            {/* Social links */}
-            {socials.map((social) => (
-              <a
-                key={social.name}
-                href={social.href}
-                className={cn(
-                  "w-10 h-10 rounded-lg",
-                  "bg-gray-900/50 border border-gray-800",
-                  "flex items-center justify-center",
-                  "hover:border-orange-500 hover:bg-orange-500/10",
-                  "transition-all duration-300",
-                  "group"
-                )}
-                aria-label={social.name}
-              >
-                <social.icon className="w-5 h-5 text-gray-400 group-hover:text-orange-400 transition-colors" />
-              </a>
-            ))}
+            {/* Social link - LinkedIn only */}
+            <a
+              href="#"
+              className={cn(
+                "w-10 h-10 rounded-lg",
+                "bg-gray-900/50 border border-gray-800",
+                "flex items-center justify-center",
+                "hover:border-orange-500 hover:bg-orange-500/10",
+                "transition-all duration-300",
+                "group"
+              )}
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="w-5 h-5 text-gray-400 group-hover:text-orange-400 transition-colors" />
+            </a>
           </div>
           
-          {/* Copyright and badges */}
+          {/* Copyright */}
           <div className="text-center md:text-right">
-            <div className="flex items-center gap-4 mb-2">
-              <div className="flex items-center gap-1 px-3 py-1 rounded-full bg-gray-900/50 border border-gray-800">
-                <Crown className="w-3 h-3 text-yellow-500" />
-                <span className="text-xs text-gray-400">Premium Quality</span>
-              </div>
-              <div className="flex items-center gap-1 px-3 py-1 rounded-full bg-gray-900/50 border border-gray-800">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                <span className="text-xs text-gray-400">99.9% Uptime</span>
-              </div>
-            </div>
             <p className="text-sm text-gray-500">
               © {new Date().getFullYear()} Cold AI. All rights reserved.
             </p>
             <p className="text-xs text-gray-600 mt-1">
-              Made with ♜ in the UK
+              Made with ♗ in the UK
             </p>
           </div>
         </div>

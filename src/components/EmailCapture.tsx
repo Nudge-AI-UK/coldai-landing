@@ -103,7 +103,7 @@ export default function EmailCapture() {
                   animation="fadeIn"
                   by="text"
                   delay={0.3}
-                  className="text-xl text-gray-400 max-w-2xl mx-auto"
+                  className="text-xl text-gray-400 max-w-2xl mx-auto text-center"
                 >
                   Be among the first to revolutionise your LinkedIn outreach. 
                   Early access members get lifetime discounts and priority support.
@@ -169,24 +169,8 @@ export default function EmailCapture() {
                 </div>
               )}
               
-              {/* Benefits */}
-              <div className="pt-8 border-t border-gray-800">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {[
-                    { icon: "🎯", text: "50% Launch Discount" },
-                    { icon: "⚡", text: "Priority Access" },
-                    { icon: "👑", text: "Lifetime Benefits" },
-                  ].map((benefit, index) => (
-                    <div key={index} className="flex items-center justify-center gap-2 text-gray-400">
-                      <span className="text-2xl">{benefit.icon}</span>
-                      <span className="text-sm">{benefit.text}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              
               {/* Privacy note */}
-              <p className="text-xs text-gray-500 flex items-center justify-center gap-1">
+              <p className="text-xs text-gray-500 flex items-center justify-center gap-1 pt-8">
                 <AlertCircle className="w-3 h-3" />
                 We respect your privacy. No spam, ever.
               </p>
