@@ -146,7 +146,7 @@ export default function EmailCapture() {
                         <span className="animate-pulse">Joining...</span>
                       ) : (
                         <>
-                          Get Early Access
+                          Request Access
                           <Send className="w-5 h-5" />
                         </>
                       )}
