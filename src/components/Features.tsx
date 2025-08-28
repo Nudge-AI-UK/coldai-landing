@@ -7,10 +7,7 @@ import {
   Zap, 
   Shield, 
   Users, 
-  BarChart3,
-  Sparkles,
-  Crown,
-  Lightbulb
+  BarChart3
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -19,50 +16,50 @@ const features = [
     icon: Brain,
     title: "AI-Powered Intelligence",
     description: "Advanced algorithms analyse profiles to craft messages that resonate with each prospect's unique background and interests.",
-    gradient: "from-orange-500 to-yellow-500",
+    gradient: "from-orange-500 to-amber-500",
+    bgColor: "bg-gradient-to-br from-orange-600/20 to-amber-600/20",
     delay: 0.1
   },
   {
     icon: Target,
     title: "Precision Targeting",
     description: "Identify and reach the right decision-makers with laser-focused accuracy. No more spray and pray.",
-    gradient: "from-yellow-500 to-amber-500",
+    gradient: "from-yellow-500 to-lime-500",
+    bgColor: "bg-gradient-to-br from-yellow-600/20 to-lime-600/20",
     delay: 0.2
   },
   {
     icon: Zap,
     title: "Lightning Fast",
-    description: "Generate hundreds of personalised messages in seconds. Scale your outreach without losing the personal touch.",
-    gradient: "from-amber-500 to-orange-500",
+    description: "Generate hundreds of personalised messages quickly. Scale your outreach without losing the personal touch.",
+    gradient: "from-amber-500 to-red-500",
+    bgColor: "bg-gradient-to-br from-amber-600/20 to-red-600/20",
     delay: 0.3
   },
   {
     icon: Shield,
     title: "Compliance First",
     description: "Built-in safeguards ensure your messages comply with LinkedIn's terms and GDPR regulations.",
-    gradient: "from-orange-500 to-red-500",
+    gradient: "from-red-500 to-pink-500",
+    bgColor: "bg-gradient-to-br from-red-600/20 to-pink-600/20",
     delay: 0.4
   },
   {
     icon: Users,
     title: "Team Collaboration",
     description: "Share templates, track performance, and maintain consistent messaging across your entire sales team.",
-    gradient: "from-red-500 to-orange-500",
+    gradient: "from-indigo-500 to-purple-500",
+    bgColor: "bg-gradient-to-br from-indigo-600/20 to-purple-600/20",
     delay: 0.5
   },
   {
     icon: BarChart3,
     title: "Analytics Dashboard",
     description: "Track open rates, response rates, and conversions. Optimise your approach with data-driven insights.",
-    gradient: "from-orange-500 to-yellow-500",
+    gradient: "from-green-500 to-teal-500",
+    bgColor: "bg-gradient-to-br from-green-600/20 to-teal-600/20",
     delay: 0.6
   }
-]
-
-const strategicBenefits = [
-  { icon: Crown, text: "10x Response Rates", highlight: true },
-  { icon: Lightbulb, text: "Zero Templates", highlight: false },
-  { icon: Sparkles, text: "100% Personalised", highlight: true },
 ]
 
 export default function Features() {
@@ -102,30 +99,15 @@ export default function Features() {
           </TextAnimate>
         </div>
         
-        {/* Strategic benefits bar */}
-        <div className="flex flex-wrap justify-center gap-8 mb-20">
-          {strategicBenefits.map((benefit, index) => (
-            <div
-              key={index}
-              className={cn(
-                "flex items-center gap-3 px-6 py-3 rounded-full border transition-all duration-300",
-                benefit.highlight 
-                  ? "border-orange-500/50 bg-orange-500/10 text-orange-300"
-                  : "border-gray-700 bg-gray-900/50 text-gray-400"
-              )}
-            >
-              <benefit.icon className="w-5 h-5" />
-              <span className="font-medium">{benefit.text}</span>
-            </div>
-          ))}
-        </div>
-        
         {/* Features grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <MagicCard
               key={index}
-              className="group relative bg-black/50 backdrop-blur-xl border border-gray-800 p-8 rounded-2xl hover:border-orange-500/50 transition-all duration-500"
+              className={cn(
+                "group relative backdrop-blur-xl border border-gray-800 p-8 rounded-2xl hover:border-orange-500/50 transition-all duration-500",
+                feature.bgColor
+              )}
               gradientColor="#ea580c"
               gradientOpacity={0.15}
             >
@@ -162,54 +144,6 @@ export default function Features() {
               </div>
             </MagicCard>
           ))}
-        </div>
-        
-        {/* Chess strategy visualization */}
-        <div className="mt-32 relative">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-white mb-4">
-              Your Winning Strategy
-            </h3>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Like chess grandmasters, we think several moves ahead. 
-              Every message is crafted with strategic intent.
-            </p>
-          </div>
-          
-          {/* Chess board visualization */}
-          <div className="relative max-w-4xl mx-auto">
-            <div className="grid grid-cols-8 gap-1 p-8 bg-black/50 backdrop-blur-xl rounded-2xl border border-gray-800">
-              {Array.from({ length: 64 }).map((_, i) => {
-                const row = Math.floor(i / 8)
-                const col = i % 8
-                const isBlack = (row + col) % 2 === 0
-                const isPiece = Math.random() > 0.8
-                
-                return (
-                  <div
-                    key={i}
-                    className={cn(
-                      "aspect-square rounded-sm transition-all duration-300 flex items-center justify-center text-2xl",
-                      isBlack 
-                        ? "bg-orange-950/30 hover:bg-orange-900/50" 
-                        : "bg-gray-900/30 hover:bg-gray-800/50",
-                      "hover:scale-110 hover:z-10"
-                    )}
-                  >
-                    {isPiece && (
-                      <span className="opacity-30 hover:opacity-100 transition-opacity">
-                        {['♜', '♞', '♝', '♛', '♚', '♟'][Math.floor(Math.random() * 6)]}
-                      </span>
-                    )}
-                  </div>
-                )
-              })}
-            </div>
-            
-            {/* Floating pieces */}
-            <div className="absolute -top-8 -left-8 text-6xl text-orange-500 opacity-20 animate-pulse">♛</div>
-            <div className="absolute -bottom-8 -right-8 text-6xl text-yellow-500 opacity-20 animate-pulse" style={{ animationDelay: '1s' }}>♚</div>
-          </div>
         </div>
       </div>
     </section>
