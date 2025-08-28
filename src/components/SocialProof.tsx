@@ -1,6 +1,5 @@
 import { Marquee } from './ui/marquee'
 import { TextAnimate } from './ui/text-animate'
-import { cn } from '@/lib/utils'
 
 const companies = [
   { name: "Microsoft", logo: "🏢" },

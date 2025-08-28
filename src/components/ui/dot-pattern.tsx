@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useEffect, useId, useRef, useState } from "react";
+import { useId } from "react";
 
 interface DotPatternProps extends React.SVGProps<SVGSVGElement> {
   width?: number;

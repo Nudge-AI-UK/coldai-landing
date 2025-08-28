@@ -13,7 +13,7 @@ export const Meteors: React.FC<MeteorsProps> = ({
   const meteors = new Array(number).fill(true);
   return (
     <div className={cn("absolute inset-0 overflow-hidden", className)} {...props}>
-      {meteors.map((el, idx) => (
+      {meteors.map((_, idx) => (
         <span
           key={"meteor" + idx}
           className={cn(
