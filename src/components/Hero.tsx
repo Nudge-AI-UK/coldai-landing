@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { TextAnimate } from './ui/text-animate'
 import { AnimatedGradientText } from './ui/animated-gradient-text'
 import { Ripple } from './ui/ripple'
@@ -10,6 +11,22 @@ import { ArrowDown, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export default function Hero() {
+  const [headlineIndex, setHeadlineIndex] = useState(0)
+  
+  const headlines = [
+    "Sends LinkedIn Messages People Reply To",
+    "Writes & Sends LinkedIn Messages That Work", 
+    "Personalises Messages People Actually Answer"
+  ]
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHeadlineIndex((prev) => (prev + 1) % headlines.length)
+    }, 3500) // Change every 3.5 seconds
+    
+    return () => clearInterval(interval)
+  }, [headlines.length])
+
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4">
       {/* Enhanced background layers */}
@@ -73,38 +90,48 @@ export default function Hero() {
         </div>
         
         <div className="space-y-8">
-          {/* Main headline with enhanced animation */}
-          <TextAnimate
-            animation="blurInUp"
-            by="word"
-            as="h1"
-            duration={0.5}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
-          >
+          {/* Main headline with rotating text */}
+          <div className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
             <span className="bg-gradient-to-b from-white via-white to-gray-400 bg-clip-text text-transparent">
-              Your Strategic Move to
+              AI Agent That{' '}
             </span>
-          </TextAnimate>
-          
-          <div className="relative">
-            <SparklesText
-              className="text-5xl md:text-7xl lg:text-8xl font-bold"
-              colors={{ first: "#c084fc", second: "#60a5fa" }}
-              sparklesCount={8}
-            >
-              Winning Outreach
-            </SparklesText>
+            <div className="relative inline-block min-h-[1.2em]">
+              {headlines.map((headline, index) => (
+                <div
+                  key={index}
+                  className={cn(
+                    "absolute top-0 left-0 w-full transition-all duration-700 ease-in-out",
+                    index === headlineIndex 
+                      ? "opacity-100 transform translate-y-0" 
+                      : "opacity-0 transform translate-y-8"
+                  )}
+                >
+                  <SparklesText
+                    className="text-5xl md:text-7xl lg:text-8xl font-bold"
+                    colors={{ first: "#c084fc", second: "#60a5fa" }}
+                    sparklesCount={6}
+                  >
+                    {headline}
+                  </SparklesText>
+                </div>
+              ))}
+              {/* Invisible placeholder to maintain height */}
+              <div className="invisible relative">
+                <span className="text-5xl md:text-7xl lg:text-8xl font-bold">
+                  {headlines[0]}
+                </span>
+              </div>
+            </div>
           </div>
           
-          {/* Enhanced subheadline */}
+          {/* Updated static subheadline */}
           <TextAnimate
             animation="fadeIn"
             by="text"
             delay={0.8}
             className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light"
           >
-            Cold AI crafts personalised LinkedIn messages that checkmate the competition. 
-            Strategic. Intelligent. Unstoppable.
+            Cold AI Agent sends personalised outreach that sparks conversations and wins meetings.
           </TextAnimate>
         </div>
         
