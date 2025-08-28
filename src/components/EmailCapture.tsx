@@ -99,15 +99,17 @@ export default function EmailCapture() {
                   Claim Your Advantage
                 </SparklesText>
                 
-                <TextAnimate
-                  animation="fadeIn"
-                  by="text"
-                  delay={0.3}
-                  className="text-xl text-gray-400 max-w-2xl mx-auto text-center"
-                >
-                  Be among the first to revolutionise your LinkedIn outreach. 
-                  Early access members get lifetime discounts and priority support.
-                </TextAnimate>
+                <div className="max-w-2xl mx-auto">
+                  <TextAnimate
+                    animation="fadeIn"
+                    by="text"
+                    delay={0.3}
+                    className="text-xl text-gray-400 text-center block"
+                  >
+                    Be among the first to revolutionise your LinkedIn outreach.
+                    Join the exclusive early access programme.
+                  </TextAnimate>
+                </div>
               </div>
               
               {/* Form */}
