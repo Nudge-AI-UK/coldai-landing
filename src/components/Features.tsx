@@ -1,6 +1,5 @@
 import { TextAnimate } from './ui/text-animate'
 import { MagicCard } from './ui/magic-card'
-import { AnimatedBeam } from './ui/animated-beam'
 import { BorderBeam } from './ui/border-beam'
 import { 
   Brain, 

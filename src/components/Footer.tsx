@@ -1,4 +1,3 @@
-import { TextAnimate } from './ui/text-animate'
 import { Linkedin, Twitter, Mail, ChevronRight, Crown } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
