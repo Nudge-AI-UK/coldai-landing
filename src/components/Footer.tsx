@@ -13,12 +13,6 @@ const navigation = {
     { name: 'Privacy', href: '#privacy' },
     { name: 'Terms', href: '#terms' },
     { name: 'Cookie Policy', href: '#cookies' },
-    { name: 'GDPR', href: '#gdpr' },
-  ],
-  resources: [
-    { name: 'Documentation', href: '#docs' },
-    { name: 'Help Centre', href: '#help' },
-    { name: 'Community', href: '#community' },
   ],
 }
 
@@ -83,7 +77,7 @@ export default function Footer() {
           </div>
           
           {/* Navigation grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 gap-8">
             {Object.entries(navigation).map(([category, links]) => (
               <div key={category}>
                 <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">

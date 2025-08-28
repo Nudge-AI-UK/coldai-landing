@@ -24,40 +24,40 @@ const features = [
     icon: Target,
     title: "Precision Targeting",
     description: "Identify and reach the right decision-makers with laser-focused accuracy. No more spray and pray.",
-    gradient: "from-yellow-500 to-lime-500",
-    bgColor: "bg-gradient-to-br from-yellow-600/20 to-lime-600/20",
+    gradient: "from-blue-500 to-cyan-500",
+    bgColor: "bg-gradient-to-br from-blue-600/20 to-cyan-600/20",
     delay: 0.2
   },
   {
     icon: Zap,
     title: "Lightning Fast",
     description: "Generate hundreds of personalised messages quickly. Scale your outreach without losing the personal touch.",
-    gradient: "from-amber-500 to-red-500",
-    bgColor: "bg-gradient-to-br from-amber-600/20 to-red-600/20",
+    gradient: "from-purple-500 to-pink-500",
+    bgColor: "bg-gradient-to-br from-purple-600/20 to-pink-600/20",
     delay: 0.3
   },
   {
     icon: Shield,
     title: "Compliance First",
     description: "Built-in safeguards ensure your messages comply with LinkedIn's terms and GDPR regulations.",
-    gradient: "from-red-500 to-pink-500",
-    bgColor: "bg-gradient-to-br from-red-600/20 to-pink-600/20",
+    gradient: "from-green-500 to-emerald-500",
+    bgColor: "bg-gradient-to-br from-green-600/20 to-emerald-600/20",
     delay: 0.4
   },
   {
     icon: Users,
     title: "Team Collaboration",
     description: "Share templates, track performance, and maintain consistent messaging across your entire sales team.",
-    gradient: "from-indigo-500 to-purple-500",
-    bgColor: "bg-gradient-to-br from-indigo-600/20 to-purple-600/20",
+    gradient: "from-red-500 to-rose-500",
+    bgColor: "bg-gradient-to-br from-red-600/20 to-rose-600/20",
     delay: 0.5
   },
   {
     icon: BarChart3,
     title: "Analytics Dashboard",
     description: "Track open rates, response rates, and conversions. Optimise your approach with data-driven insights.",
-    gradient: "from-green-500 to-teal-500",
-    bgColor: "bg-gradient-to-br from-green-600/20 to-teal-600/20",
+    gradient: "from-yellow-500 to-orange-500",
+    bgColor: "bg-gradient-to-br from-yellow-600/20 to-orange-600/20",
     delay: 0.6
   }
 ]

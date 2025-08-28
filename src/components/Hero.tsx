@@ -62,17 +62,17 @@ export default function Hero() {
       </div>
       
       <div className="relative z-10 text-center space-y-8 max-w-5xl mx-auto">
-        {/* Enhanced Bishop Logo with animation (now smaller as secondary element) */}
+        {/* Enhanced Bishop Logo with WHITE accent on top (smaller as secondary element) */}
         <div className="flex justify-center mb-8">
           <div className="relative group">
             {/* Animated glow */}
             <div className="absolute -inset-1 bg-gradient-to-r from-orange-600 to-yellow-600 rounded-3xl blur-2xl opacity-40 group-hover:opacity-60 transition duration-1000 animate-pulse-scale" />
             
-            {/* Chess piece container */}
+            {/* Chess piece container with white accent on top */}
             <div className="relative">
-              <div className="relative w-20 h-20 bg-gradient-to-br from-orange-600 via-orange-500 to-yellow-600 rounded-3xl flex items-center justify-center transform hover:scale-110 transition-all duration-500 shadow-2xl">
+              <div className="relative w-20 h-20 bg-gradient-to-br from-white via-orange-500 to-yellow-600 rounded-3xl flex items-center justify-center transform hover:scale-110 transition-all duration-500 shadow-2xl">
                 <BorderBeam size={80} duration={12} delay={0} />
-                <span className="text-4xl font-bold text-white drop-shadow-2xl">♗</span>
+                <span className="text-4xl font-bold text-black drop-shadow-2xl">♗</span>
               </div>
             </div>
           </div>
@@ -133,15 +133,17 @@ export default function Hero() {
             </div>
           </div>
           
-          {/* Updated static subheadline - center aligned with wrap */}
-          <TextAnimate
-            animation="fadeIn"
-            by="text"
-            delay={0.8}
-            className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light text-center"
-          >
-            Cold AI Agent sends personalised outreach that sparks conversations and wins meetings.
-          </TextAnimate>
+          {/* Updated static subheadline - center aligned with proper wrapping */}
+          <div className="max-w-3xl mx-auto">
+            <TextAnimate
+              animation="fadeIn"
+              by="text"
+              delay={0.8}
+              className="text-xl md:text-2xl text-gray-300 leading-relaxed font-light text-center block"
+            >
+              Cold AI Agent sends personalised outreach that sparks conversations and wins meetings.
+            </TextAnimate>
+          </div>
         </div>
         
         {/* Enhanced CTA section */}
