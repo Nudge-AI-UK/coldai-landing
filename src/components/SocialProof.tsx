@@ -49,7 +49,7 @@ export default function SocialProof() {
   return (
     <section className="relative py-32 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-purple-950/5 to-black" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-orange-950/5 to-black" />
       
       <div className="relative z-10">
         {/* Header */}
@@ -57,7 +57,7 @@ export default function SocialProof() {
           <TextAnimate
             animation="blurInUp"
             by="word"
-            className="text-sm uppercase tracking-[0.3em] text-purple-400 font-semibold mb-4"
+            className="text-sm uppercase tracking-[0.3em] text-orange-400 font-semibold mb-4"
           >
             Trusted by Leaders
           </TextAnimate>
@@ -78,7 +78,7 @@ export default function SocialProof() {
             {companies.map((company, index) => (
               <div
                 key={index}
-                className="mx-8 flex items-center gap-3 px-6 py-3 rounded-full bg-gray-900/50 border border-gray-800 hover:border-purple-500/50 transition-all duration-300 group"
+                className="mx-8 flex items-center gap-3 px-6 py-3 rounded-full bg-gray-900/50 border border-gray-800 hover:border-orange-500/50 transition-all duration-300 group"
               >
                 <span className="text-2xl">{company.logo}</span>
                 <span className="text-gray-400 font-medium group-hover:text-white transition-colors">
@@ -97,9 +97,9 @@ export default function SocialProof() {
                 key={index}
                 className="relative group"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-600/20 to-yellow-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
-                <div className="relative bg-gray-900/50 backdrop-blur-xl border border-gray-800 rounded-2xl p-8 hover:border-purple-500/50 transition-all duration-300">
+                <div className="relative bg-gray-900/50 backdrop-blur-xl border border-gray-800 rounded-2xl p-8 hover:border-orange-500/50 transition-all duration-300">
                   {/* Stars */}
                   <div className="flex gap-1 mb-4">
                     {Array.from({ length: testimonial.rating }).map((_, i) => (
@@ -114,7 +114,7 @@ export default function SocialProof() {
                   
                   {/* Author */}
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-white font-bold">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-yellow-500 flex items-center justify-center text-white font-bold">
                       {testimonial.name.split(' ').map(n => n[0]).join('')}
                     </div>
                     <div>
@@ -140,7 +140,7 @@ export default function SocialProof() {
               { value: "2min", label: "Setup Time" },
             ].map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-b from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-b from-orange-400 to-yellow-400 bg-clip-text text-transparent">
                   {stat.value}
                 </div>
                 <div className="text-gray-400 mt-2">{stat.label}</div>

@@ -40,7 +40,7 @@ export default function Footer() {
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(#7c3aed 1px, transparent 1px), linear-gradient(90deg, #7c3aed 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(#ea580c 1px, transparent 1px), linear-gradient(90deg, #ea580c 1px, transparent 1px)`,
           backgroundSize: '30px 30px',
         }} />
       </div>
@@ -51,7 +51,7 @@ export default function Footer() {
           <div className="mb-8 lg:mb-0">
             {/* Logo and tagline */}
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-orange-600 to-yellow-600 rounded-xl flex items-center justify-center">
                 <span className="text-2xl font-bold text-white">♜</span>
               </div>
               <div>
@@ -73,7 +73,7 @@ export default function Footer() {
                     "flex-1 px-4 py-2 rounded-lg",
                     "bg-gray-900/50 border border-gray-800",
                     "text-white placeholder-gray-500",
-                    "focus:outline-none focus:border-purple-500",
+                    "focus:outline-none focus:border-orange-500",
                     "transition-colors"
                   )}
                 />
@@ -81,7 +81,7 @@ export default function Footer() {
                   type="submit"
                   className={cn(
                     "px-4 py-2 rounded-lg",
-                    "bg-purple-600 hover:bg-purple-700",
+                    "bg-orange-600 hover:bg-orange-700",
                     "text-white font-medium",
                     "transition-colors",
                     "flex items-center gap-1"
@@ -106,7 +106,7 @@ export default function Footer() {
                     <li key={link.name}>
                       <a
                         href={link.href}
-                        className="text-gray-400 hover:text-purple-400 transition-colors text-sm"
+                        className="text-gray-400 hover:text-orange-400 transition-colors text-sm"
                       >
                         {link.name}
                       </a>
@@ -130,13 +130,13 @@ export default function Footer() {
                   "w-10 h-10 rounded-lg",
                   "bg-gray-900/50 border border-gray-800",
                   "flex items-center justify-center",
-                  "hover:border-purple-500 hover:bg-purple-500/10",
+                  "hover:border-orange-500 hover:bg-orange-500/10",
                   "transition-all duration-300",
                   "group"
                 )}
                 aria-label={social.name}
               >
-                <social.icon className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transition-colors" />
+                <social.icon className="w-5 h-5 text-gray-400 group-hover:text-orange-400 transition-colors" />
               </a>
             ))}
           </div>

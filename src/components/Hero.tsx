@@ -37,7 +37,7 @@ export default function Hero() {
         className="absolute inset-0 z-0"
         squareSize={32}
         gridGap={8}
-        color="#7c3aed"
+        color="#ea580c"
         maxOpacity={0.1}
         flickerChance={0.02}
       />
@@ -72,7 +72,7 @@ export default function Hero() {
             <div className="relative">
               <div className="relative w-20 h-20 bg-gradient-to-br from-orange-600 via-orange-500 to-yellow-600 rounded-3xl flex items-center justify-center transform hover:scale-110 transition-all duration-500 shadow-2xl">
                 <BorderBeam size={80} duration={12} delay={0} />
-                <span className="text-4xl font-bold text-white drop-shadow-2xl">♝</span>
+                <span className="text-4xl font-bold text-white drop-shadow-2xl">♜</span>
               </div>
             </div>
           </div>
@@ -88,8 +88,8 @@ export default function Hero() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
               </span>
               <AnimatedGradientText
-                colorFrom="#c084fc"
-                colorTo="#60a5fa"
+                colorFrom="#fb923c"
+                colorTo="#fbbf24"
                 className="text-sm font-semibold tracking-wide"
               >
                 Coming Soon • Join the Revolution
@@ -117,7 +117,7 @@ export default function Hero() {
                 >
                   <SparklesText
                     className="text-5xl md:text-7xl lg:text-8xl font-bold"
-                    colors={{ first: "#c084fc", second: "#60a5fa" }}
+                    colors={{ first: "#fb923c", second: "#fbbf24" }}
                     sparklesCount={6}
                   >
                     {headline}
@@ -149,15 +149,22 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <ShimmerButton
               className="shadow-2xl relative group"
-              background="linear-gradient(110deg,#000103 45%,#7c3aed 48%,#60a5fa 52%,#000103 55%)"
+              background="linear-gradient(110deg,#000103 45%,#ea580c 48%,#fbbf24 52%,#000103 55%)"
               borderRadius="12px"
               onClick={() => document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <span className="relative z-10 flex items-center gap-2 text-white font-semibold text-lg px-8 py-4">
-                Request Access
+                Get Early Access
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
             </ShimmerButton>
+            
+            <button className="group relative px-8 py-4 text-gray-400 hover:text-white transition-all duration-300">
+              <span className="relative z-10 flex items-center gap-2 font-medium">
+                Watch Demo
+                <ArrowDown className="w-4 h-4 rotate-[-90deg] group-hover:translate-x-1 transition-transform" />
+              </span>
+            </button>
           </div>
           
           {/* Trust indicators */}
@@ -168,7 +175,7 @@ export default function Hero() {
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              <span>Join The Beta</span>
+              <span>Setup in 2 Minutes</span>
             </div>
           </div>
         </div>
