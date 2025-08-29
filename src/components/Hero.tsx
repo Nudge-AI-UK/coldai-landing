@@ -52,28 +52,33 @@ export default function Hero() {
         numCircles={3}
       />
       
-      {/* Logo in top left corner */}
-      <div className="absolute top-6 left-6 z-20">    
+      <div className="absolute top-6 left-6 z-20">
         <img 
-          src="/Cold_AI_Logo_Square_Transparent.png"  // or .svg depending on your file   
+          src="/cold-ai-logo.png"
           alt="Cold AI"
-          className="h-8 md:h-10 w-auto hover:scale-105 transition-transform cursor-pointer"   
-          onClick={() => window.location.reload()}   
-        />    
+          className="h-14 md:h-16 w-auto hover:scale-105 transition-transform cursor-pointer"
+          onClick={() => window.location.reload()}
+        />
       </div>
       
       <div className="relative z-10 text-center space-y-8 max-w-5xl mx-auto">
-        {/* Enhanced Bishop Logo with WHITE accent on top (smaller as secondary element) */}
+        {/* Enhanced Logo with animated glow */}
         <div className="flex justify-center mb-8">
           <div className="relative group">
-            {/* Animated glow */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-orange-600 to-yellow-600 rounded-3xl blur-2xl opacity-40 group-hover:opacity-60 transition duration-1000 animate-pulse-scale" />
+            {/* Animated glow - keep the yellow glow for contrast */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-orange-400 to-yellow-500 rounded-3xl blur-2xl opacity-40 group-hover:opacity-70 transition duration-1000 animate-pulse-scale" />
             
-            {/* Chess piece container with white accent on top */}
+            {/* Logo container with dark background to make orange logo pop */}
             <div className="relative">
-              <div className="relative w-20 h-20 bg-gradient-to-br from-white via-orange-500 to-yellow-600 rounded-3xl flex items-center justify-center transform hover:scale-110 transition-all duration-500 shadow-2xl">
+              <div className="relative w-20 h-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-3xl flex items-center justify-center transform hover:scale-110 transition-all duration-500 shadow-2xl border border-gray-700">
                 <BorderBeam size={80} duration={12} delay={0} />
-                <span className="text-4xl font-bold text-black drop-shadow-2xl">♗</span>
+                
+                {/* Your actual logo */}
+                <img 
+                  src="/Bishop_Square_transparent.png" 
+                  alt="Cold AI"
+                  className="w-12 h-12 object-contain drop-shadow-lg"
+                />
               </div>
             </div>
           </div>
@@ -171,7 +176,7 @@ export default function Hero() {
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              <span>Setup in 2 Minutes</span>
+              <span>Join The Beta</span>
             </div>
           </div>
         </div>
