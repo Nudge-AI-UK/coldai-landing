@@ -54,9 +54,9 @@ export default function Hero() {
       
       <div className="absolute top-6 left-6 z-20">
         <img 
-          src="/cold-ai-logo.png"
+          src="/Cold_AI_Logo_Rectangle_Transparent.png"
           alt="Cold AI"
-          className="h-14 md:h-16 w-auto hover:scale-105 transition-transform cursor-pointer"
+          className="h-96 md:h-120 w-auto hover:scale-105 transition-transform cursor-pointer"
           onClick={() => window.location.reload()}
         />
       </div>
