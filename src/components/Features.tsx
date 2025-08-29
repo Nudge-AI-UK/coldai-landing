@@ -90,7 +90,7 @@ export default function Features() {
           
           <TextAnimate
             animation="fadeIn"
-            by="text"
+            by="word"
             delay={0.4}
             className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto px-2 sm:px-0"
           >
