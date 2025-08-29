@@ -60,29 +60,6 @@ export default function Hero() {
           onClick={() => window.location.reload()}
         />
       </div>
-      
-      <div className="relative z-10 text-center space-y-8 max-w-5xl mx-auto">
-        {/* Enhanced Logo with animated glow */}
-        <div className="flex justify-center mb-8">
-          <div className="relative group">
-            {/* Animated glow - keep the yellow glow for contrast */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-orange-400 to-yellow-500 rounded-3xl blur-2xl opacity-40 group-hover:opacity-70 transition duration-1000 animate-pulse-scale" />
-            
-            {/* Logo container with dark background to make orange logo pop */}
-            <div className="relative">
-              <div className="relative w-20 h-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-3xl flex items-center justify-center transform hover:scale-110 transition-all duration-500 shadow-2xl border border-gray-700">
-                <BorderBeam size={80} duration={12} delay={0} />
-                
-                {/* Your actual logo */}
-                <img 
-                  src="/Bishop_Square_transparent.png" 
-                  alt="Cold AI"
-                  className="w-14 h-14 object-contain drop-shadow-lg"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
         
         {/* Enhanced announcement badge */}
         <div className="inline-flex items-center justify-center">
