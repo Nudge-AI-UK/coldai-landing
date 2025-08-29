@@ -19,8 +19,8 @@ const navigation = {
 
 export default function Footer() {
   return (
-    <footer className="relative bg-black border-t border-gray-900">
-      {/* Background pattern */}
+    <footer className="relative border-t border-gray-800">
+      {/* Grid pattern overlay with subtle opacity */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
           backgroundImage: `linear-gradient(#ea580c 1px, transparent 1px), linear-gradient(90deg, #ea580c 1px, transparent 1px)`,
@@ -30,7 +30,7 @@ export default function Footer() {
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
         {/* Top section */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center pb-8 sm:pb-12 border-b border-gray-900 gap-8 lg:gap-0">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center pb-8 sm:pb-12 border-b border-gray-800 gap-8 lg:gap-0">
           <div className="w-full lg:w-auto">
             {/* Logo and tagline */}
             <div className="flex items-center gap-3 mb-4">
@@ -52,7 +52,7 @@ export default function Footer() {
                   placeholder="Enter your email"
                   className={cn(
                     "flex-1 px-3 sm:px-4 py-2 rounded-lg",
-                    "bg-gray-900/50 border border-gray-800",
+                    "bg-gray-900/50 backdrop-blur-sm border border-gray-800",
                     "text-white placeholder-gray-500",
                     "focus:outline-none focus:border-orange-500",
                     "transition-colors text-sm sm:text-base"
@@ -120,7 +120,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className={cn(
                 "w-9 h-9 sm:w-10 sm:h-10 rounded-lg",
-                "bg-gray-900/50 border border-gray-800",
+                "bg-gray-900/50 backdrop-blur-sm border border-gray-800",
                 "flex items-center justify-center",
                 "hover:border-orange-500 hover:bg-orange-500/10",
                 "transition-all duration-300",
