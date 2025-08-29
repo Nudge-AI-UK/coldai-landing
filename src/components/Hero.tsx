@@ -5,7 +5,6 @@ import { Ripple } from './ui/ripple'
 import { SparklesText } from './ui/sparkles-text'
 import { Meteors } from './ui/meteors'
 import { FlickeringGrid } from './ui/flickering-grid'
-import { ShimmerButton } from './ui/shimmer-button'
 import { ArrowDown, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
