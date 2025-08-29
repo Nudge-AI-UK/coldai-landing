@@ -1,18 +1,19 @@
-import Hero from './components/Hero'
-import Features from './components/Features'
-import EmailCapture from './components/EmailCapture'
-import Footer from './components/Footer'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Toaster } from 'sonner'
+import HomePage from './components/HomePage'
+import Blog from './components/Blog'
 
 function App() {
   return (
-    <div className="min-h-screen bg-black text-white">
-      <Toaster position="top-right" theme="dark" />
-      <Hero />
-      <Features />
-      <EmailCapture />
-      <Footer />
-    </div>
+    <Router>
+      <div className="min-h-screen bg-black text-white">
+        <Toaster position="top-right" theme="dark" />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/blog" element={<Blog />} />
+        </Routes>
+      </div>
+    </Router>
   )
 }
 
