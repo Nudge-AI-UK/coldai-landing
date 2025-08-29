@@ -56,7 +56,7 @@ export default function Hero() {
         <img 
           src="/Cold_AI_Logo_Rectangle_Transparent.png"
           alt="Cold AI"
-          className="h-96 md:h-120 w-auto hover:scale-105 transition-transform cursor-pointer"
+          className="h-32 md:h-40 w-auto hover:scale-105 transition-transform cursor-pointer"
           onClick={() => window.location.reload()}
         />
       </div>
@@ -77,7 +77,7 @@ export default function Hero() {
                 <img 
                   src="/Bishop_Square_transparent.png" 
                   alt="Cold AI"
-                  className="w-12 h-12 object-contain drop-shadow-lg"
+                  className="w-14 h-14 object-contain drop-shadow-lg"
                 />
               </div>
             </div>
