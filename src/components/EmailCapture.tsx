@@ -4,7 +4,7 @@ import { supabase } from '@/lib/supabase'
 import { TextAnimate } from './ui/text-animate'
 import { BorderBeam } from './ui/border-beam'
 import { SparklesText } from './ui/sparkles-text'
-import { Send, CheckCircle, AlertCircle, ChevronRight } from 'lucide-react'
+import { CheckCircle, AlertCircle, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export default function EmailCapture() {
@@ -58,10 +58,7 @@ export default function EmailCapture() {
 
   return (
     <section id="register" className="relative py-32 px-4 overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-orange-950/20 to-black" />
-      
-      {/* Animated grid pattern overlay */}
+      {/* Animated grid pattern overlay - appears over the static background */}
       <div className="absolute inset-0 opacity-10 z-[1]">
         <div className="absolute inset-0" style={{
           backgroundImage: `linear-gradient(#ea580c 1px, transparent 1px), linear-gradient(90deg, #ea580c 1px, transparent 1px)`,
