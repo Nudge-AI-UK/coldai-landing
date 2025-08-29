@@ -58,7 +58,7 @@ export default function EmailCapture() {
   }
 
   return (
-    <section id="register" className="relative py-32 px-4 overflow-hidden">
+    <section id="register" className="relative py-20 sm:py-24 md:py-32 px-4 sm:px-6 overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-orange-950/20 to-black" />
       
@@ -77,34 +77,34 @@ export default function EmailCapture() {
           <div className="absolute -inset-1 bg-gradient-to-r from-orange-600 to-yellow-600 rounded-3xl blur-2xl opacity-20 group-hover:opacity-30 transition duration-1000" />
           
           {/* Card */}
-          <div className="relative bg-black/60 backdrop-blur-xl border border-gray-800 rounded-3xl p-12 md:p-16">
+          <div className="relative bg-black/60 backdrop-blur-xl border border-gray-800 rounded-3xl p-8 sm:p-12 md:p-16">
             <BorderBeam size={300} duration={15} />
             
-            <div className="text-center space-y-8">
+            <div className="text-center space-y-6 sm:space-y-8">
               {/* Header */}
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 <TextAnimate
                   animation="blurInUp"
                   by="word"
-                  className="text-sm uppercase tracking-[0.3em] text-orange-400 font-semibold"
+                  className="text-xs sm:text-sm uppercase tracking-[0.3em] text-orange-400 font-semibold"
                 >
                   Limited Early Access
                 </TextAnimate>
                 
                 <SparklesText
-                  className="text-4xl md:text-6xl font-bold"
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
                   colors={{ first: "#fb923c", second: "#fbbf24" }}
                   sparklesCount={6}
                 >
                   Claim Your Advantage
                 </SparklesText>
                 
-                <div className="max-w-2xl mx-auto">
+                <div className="max-w-2xl mx-auto px-2 sm:px-0">
                   <TextAnimate
                     animation="fadeIn"
                     by="text"
                     delay={0.3}
-                    className="text-xl text-gray-400 text-center block"
+                    className="text-lg sm:text-xl text-gray-400 text-center block"
                   >
                     Be among the first to revolutionise your LinkedIn outreach.
                     Join the exclusive early access programme.
@@ -114,7 +114,7 @@ export default function EmailCapture() {
               
               {/* Form */}
               {!submitted ? (
-                <form onSubmit={handleSubmit} className="space-y-6 max-w-md mx-auto">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 max-w-md mx-auto">
                   <div className="relative group">
                     <input
                       type="email"
@@ -122,12 +122,13 @@ export default function EmailCapture() {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter your email address"
                       className={cn(
-                        "w-full px-6 py-4 rounded-xl",
+                        "w-full px-4 sm:px-6 py-3 sm:py-4 rounded-xl",
                         "bg-gray-900/50 backdrop-blur-xl",
                         "border border-gray-700 focus:border-orange-500",
                         "text-white placeholder-gray-500",
                         "transition-all duration-300",
-                        "focus:outline-none focus:ring-2 focus:ring-orange-500/20"
+                        "focus:outline-none focus:ring-2 focus:ring-orange-500/20",
+                        "text-sm sm:text-base"
                       )}
                       disabled={loading}
                     />
@@ -141,29 +142,29 @@ export default function EmailCapture() {
                     background="linear-gradient(110deg,#000103 45%,#ea580c 48%,#fbbf24 52%,#000103 55%)"
                     borderRadius="12px"
                   >
-                    <span className="relative z-10 flex items-center justify-center gap-2 text-white font-semibold text-lg px-8 py-4">
+                    <span className="relative z-10 flex items-center justify-center gap-2 text-white font-semibold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4">
                       {loading ? (
                         <span className="animate-pulse">Joining...</span>
                       ) : (
                         <>
                           Request Access
-                          <Send className="w-5 h-5" />
+                          <Send className="w-4 h-4 sm:w-5 sm:h-5" />
                         </>
                       )}
                     </span>
                   </ShimmerButton>
                 </form>
               ) : (
-                <div className="space-y-6 max-w-md mx-auto">
+                <div className="space-y-4 sm:space-y-6 max-w-md mx-auto">
                   <div className="flex justify-center">
-                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center animate-pulse-scale">
-                      <CheckCircle className="w-10 h-10 text-white" />
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center animate-pulse-scale">
+                      <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                     </div>
                   </div>
                   
                   <div className="space-y-2">
-                    <h3 className="text-2xl font-bold text-white">You're In!</h3>
-                    <p className="text-gray-400">
+                    <h3 className="text-xl sm:text-2xl font-bold text-white">You're In!</h3>
+                    <p className="text-sm sm:text-base text-gray-400 px-2 sm:px-0">
                       We'll notify you as soon as Cold AI launches. 
                       Check your email for confirmation.
                     </p>
@@ -172,7 +173,7 @@ export default function EmailCapture() {
               )}
               
               {/* Privacy note */}
-              <p className="text-xs text-gray-500 flex items-center justify-center gap-1 pt-8">
+              <p className="text-xs text-gray-500 flex items-center justify-center gap-1 pt-6 sm:pt-8">
                 <AlertCircle className="w-3 h-3" />
                 We respect your privacy. No spam, ever.
               </p>
