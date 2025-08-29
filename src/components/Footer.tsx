@@ -36,7 +36,7 @@ export default function Footer() {
               <img 
                 src="/Cold_AI_Logo_Rectangle_Transparent.png"
                 alt="Cold AI"
-                className="h-8 sm:h-10 w-auto"
+                className="h-16 sm:h-20 w-auto"
               />
             </div>
             
