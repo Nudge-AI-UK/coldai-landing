@@ -112,11 +112,25 @@ export default function Hero() {
                   )}
                 >
                   <SparklesText
-                    className="!text-3xl sm:!text-4xl md:!text-6xl lg:!text-7xl xl:!text-8xl !font-bold !leading-tight bg-gradient-to-r from-orange-400 via-amber-400 to-yellow-400 bg-clip-text text-transparent !block w-full"
+                    className="!text-3xl sm:!text-4xl md:!text-6xl lg:!text-7xl xl:!text-8xl !font-bold !leading-tight !block w-full"
                     colors={{ first: "#fb923c", second: "#fbbf24" }}
                     sparklesCount={8}
                   >
-                    {headline}
+                    <span 
+                      className="!block w-full"
+                      style={{
+                        background: 'linear-gradient(90deg, #fb923c 0%, #fbbf24 50%, #fde047 100%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        textFillColor: 'transparent',
+                        display: 'block',
+                        // Fallback for browsers that don't support text gradient
+                        color: '#fb923c',
+                      }}
+                    >
+                      {headline}
+                    </span>
                   </SparklesText>
                 </div>
               ))}
