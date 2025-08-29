@@ -61,22 +61,8 @@ export default function Hero() {
   }
 
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 sm:px-6 bg-gray-900">
-      {/* Animated Background - Matching cold-ai-outreach-hub style */}
-      <div className="fixed inset-0 overflow-hidden">
-        <div 
-          className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-orange-500/10 rounded-full blur-3xl animate-pulse"
-          style={{ animationDuration: '6s' }}
-        />
-        <div 
-          className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-3xl animate-pulse"
-          style={{ animationDuration: '8s', animationDelay: '2s' }}
-        />
-        <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 bg-purple-500/10 rounded-full blur-3xl animate-pulse"
-          style={{ animationDuration: '7s', animationDelay: '1s' }}
-        />
-      </div>
+    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 sm:px-6">
+      {/* No local background needed - using global from App.tsx */}
       
       <div className="absolute top-4 sm:top-6 left-4 sm:left-6 z-20">
         <img 
