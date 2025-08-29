@@ -30,17 +30,17 @@ export default function Blog() {
     },
     {
       name: 'Tom Claydon',
-      role: 'Co-Founder & CTO',
+      role: 'Co-Founder',
       url: 'https://www.linkedin.com/in/tom-claydon-🔭-906809238/',
       vanity: 'tom-claydon-🔭-906809238',
-      description: 'Building the technical infrastructure that powers Cold AI\'s intelligent message generation.'
+      description: 'Building the future of intelligent sales automation with Cold AI.'
     },
     {
       name: 'Philip M Smith',
-      role: 'Co-Founder & Head of Product',
+      role: 'CTO',
       url: 'https://www.linkedin.com/in/philip-m-smith/',
       vanity: 'philip-m-smith',
-      description: 'Driving product strategy and user experience to make Cold AI the most intuitive outreach platform.'
+      description: 'Leading the technical architecture and development that powers Cold AI\'s intelligent message generation.'
     }
   ]
 
