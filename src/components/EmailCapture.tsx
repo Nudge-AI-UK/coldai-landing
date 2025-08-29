@@ -102,7 +102,7 @@ export default function EmailCapture() {
                 <div className="max-w-2xl mx-auto">
                   <TextAnimate
                     animation="fadeIn"
-                    by="text"
+                    by="word"
                     delay={0.3}
                     className="text-xl text-gray-400 text-center block"
                   >
