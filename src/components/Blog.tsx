@@ -1,12 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowLeft, Linkedin, ExternalLink, Eye } from 'lucide-react'
-import Modal from './ui/modal'
+import { ArrowLeft, Linkedin, ExternalLink } from 'lucide-react'
 
 export default function Blog() {
-  const [selectedProfile, setSelectedProfile] = useState<any>(null)
-  const [modalOpen, setModalOpen] = useState(false)
-
   useEffect(() => {
     // Load LinkedIn embed script
     const script = document.createElement('script')
@@ -38,13 +34,15 @@ export default function Blog() {
       url: 'https://www.linkedin.com/in/tom-claydon-🔭-906809238/',
       vanity: 'tom-claydon-🔭-906809238',
       description: 'Building the technical infrastructure that powers Cold AI\'s intelligent message generation.'
+    },
+    {
+      name: 'Philip M Smith',
+      role: 'Co-Founder & Head of Product',
+      url: 'https://www.linkedin.com/in/philip-m-smith/',
+      vanity: 'philip-m-smith',
+      description: 'Driving product strategy and user experience to make Cold AI the most intuitive outreach platform.'
     }
   ]
-
-  const openProfileModal = (profile: any) => {
-    setSelectedProfile(profile)
-    setModalOpen(true)
-  }
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -68,7 +66,7 @@ export default function Blog() {
 
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-6 py-16">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           {/* Page Title */}
           <div className="text-center mb-16">
             <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4">
@@ -79,28 +77,28 @@ export default function Blog() {
             </p>
           </div>
 
-          {/* LinkedIn Feeds */}
-          <div className="grid lg:grid-cols-2 gap-8 mb-16">
+          {/* LinkedIn Profiles - Stacked Vertically */}
+          <div className="space-y-12">
             {profiles.map((profile, index) => (
               <div 
                 key={index}
                 className="bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700 p-8 hover:border-orange-500/50 transition-all"
               >
-                <div className="mb-6">
+                {/* Profile Header */}
+                <div className="mb-8 text-center">
                   <h2 className="text-2xl font-bold text-white mb-2">{profile.name}</h2>
                   <p className="text-orange-400 font-medium mb-3">{profile.role}</p>
-                  <p className="text-gray-400">{profile.description}</p>
+                  <p className="text-gray-400 max-w-2xl mx-auto">{profile.description}</p>
                 </div>
 
-                {/* LinkedIn Profile Badge/Feed */}
-                <div className="bg-white/5 rounded-xl p-6 mb-6">
-                  {/* LinkedIn embed widget */}
+                {/* LinkedIn Badge */}
+                <div className="bg-white/5 rounded-xl p-6 mb-8 flex justify-center">
                   <div 
                     className="LI-profile-badge"
                     data-version="v1" 
                     data-size="large" 
                     data-locale="en_US" 
-                    data-type="vertical" 
+                    data-type="horizontal" 
                     data-theme="dark" 
                     data-vanity={profile.vanity}
                   >
@@ -115,23 +113,28 @@ export default function Blog() {
                   </div>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="flex gap-4">
-                  <button
-                    onClick={() => openProfileModal(profile)}
-                    className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-medium rounded-lg transition-all group"
-                  >
-                    <Eye className="w-5 h-5" />
-                    View in Modal
-                  </button>
+                {/* Embedded LinkedIn Profile */}
+                <div className="bg-white rounded-xl p-4 mb-6">
+                  <iframe
+                    src={`${profile.url}?embed=true`}
+                    width="100%"
+                    height="600"
+                    frameBorder="0"
+                    className="rounded-lg"
+                    title={`${profile.name} LinkedIn Profile`}
+                  />
+                </div>
+
+                {/* View Full Profile Button */}
+                <div className="text-center">
                   <a
                     href={profile.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-medium rounded-lg transition-all group"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-medium rounded-lg transition-all group"
                   >
                     <Linkedin className="w-5 h-5" />
-                    LinkedIn
+                    View Full LinkedIn Profile
                     <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </a>
                 </div>
@@ -140,7 +143,7 @@ export default function Blog() {
           </div>
 
           {/* Recent Activity Section */}
-          <div className="bg-gray-800/30 backdrop-blur-sm rounded-2xl border border-gray-700 p-8">
+          <div className="bg-gray-800/30 backdrop-blur-sm rounded-2xl border border-gray-700 p-8 mt-12">
             <h2 className="text-2xl font-bold text-white mb-6">Stay Connected</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex items-start space-x-4">
@@ -188,48 +191,6 @@ export default function Blog() {
           </div>
         </div>
       </div>
-
-      {/* LinkedIn Profile Modal */}
-      <Modal
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
-        title={selectedProfile ? `${selectedProfile.name} - LinkedIn Profile` : ''}
-      >
-        {selectedProfile && (
-          <div className="space-y-6">
-            <div className="text-center">
-              <h3 className="text-2xl font-bold text-white mb-2">{selectedProfile.name}</h3>
-              <p className="text-orange-400 font-medium mb-4">{selectedProfile.role}</p>
-              <p className="text-gray-400 max-w-2xl mx-auto">{selectedProfile.description}</p>
-            </div>
-            
-            {/* Embedded LinkedIn Profile in Modal */}
-            <div className="bg-white rounded-xl p-8">
-              <iframe
-                src={`${selectedProfile.url}?embed=true`}
-                width="100%"
-                height="600"
-                frameBorder="0"
-                className="rounded-lg"
-                title={`${selectedProfile.name} LinkedIn Profile`}
-              />
-            </div>
-            
-            <div className="text-center">
-              <a
-                href={selectedProfile.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-medium rounded-lg transition-all group"
-              >
-                <Linkedin className="w-5 h-5" />
-                View Full Profile on LinkedIn
-                <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              </a>
-            </div>
-          </div>
-        )}
-      </Modal>
     </div>
   )
 }

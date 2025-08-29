@@ -110,7 +110,7 @@ export default function Hero() {
                       : "opacity-0 transform translate-y-8"
                   )}
                 >
-                  <span className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight text-orange-500">
+                  <span className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight text-orange-400">
                     {headline}
                   </span>
                 </div>

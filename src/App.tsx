@@ -7,7 +7,7 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen bg-gray-900 text-white relative">
-        {/* Global animated background - matching Hero style */}
+        {/* Global animated background - fixed position for static scrolling */}
         <div className="fixed inset-0 overflow-hidden pointer-events-none">
           <div 
             className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-orange-500/10 rounded-full blur-3xl animate-pulse"
