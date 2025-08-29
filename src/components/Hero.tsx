@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { TextAnimate } from './ui/text-animate'
 import { AnimatedGradientText } from './ui/animated-gradient-text'
+import { SparklesText } from './ui/sparkles-text'
 import { ArrowDown, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { registerInterest } from '@/lib/supabase'
@@ -110,9 +111,13 @@ export default function Hero() {
                       : "opacity-0 transform translate-y-8"
                   )}
                 >
-                  <span className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight text-orange-300">
+                  <SparklesText
+                    className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight bg-gradient-to-r from-orange-400 via-amber-400 to-yellow-400 bg-clip-text text-transparent"
+                    colors={{ first: "#fb923c", second: "#fbbf24" }}
+                    sparklesCount={8}
+                  >
                     {headline}
-                  </span>
+                  </SparklesText>
                 </div>
               ))}
               {/* Invisible placeholder to maintain height */}
