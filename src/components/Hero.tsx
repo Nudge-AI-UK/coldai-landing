@@ -98,34 +98,41 @@ export default function Hero() {
           {/* Main headline with rotating text */}
           <div className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-tight">
             <span className="text-white block mb-2">
-              AI Agent That{' '}
+              Cold AI{' '}
             </span>
-            <div className="relative inline-block min-h-[1.2em] w-full">
+            <div className="relative w-full" style={{ minHeight: '2em' }}>
               {headlines.map((headline, index) => (
                 <div
                   key={index}
                   className={cn(
-                    "absolute top-0 left-0 w-full transition-all duration-700 ease-in-out",
+                    "w-full transition-all duration-700 ease-in-out",
                     index === headlineIndex 
-                      ? "opacity-100 transform translate-y-0" 
-                      : "opacity-0 transform translate-y-8"
+                      ? "opacity-100 transform translate-y-0 relative" 
+                      : "opacity-0 transform translate-y-8 absolute top-0 left-0 right-0"
                   )}
                 >
                   <SparklesText
-                    className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight bg-gradient-to-r from-orange-400 via-amber-400 to-yellow-400 bg-clip-text text-transparent"
+                    className="!text-3xl sm:!text-4xl md:!text-6xl lg:!text-7xl xl:!text-8xl !font-bold !leading-tight !block w-full"
                     colors={{ first: "#fb923c", second: "#fbbf24" }}
                     sparklesCount={8}
                   >
-                    {headline}
+                    <span 
+                      className="!block w-full"
+                      style={{
+                        background: 'linear-gradient(90deg, #fb923c 0%, #fbbf24 50%, #fde047 100%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        display: 'block',
+                        // Fallback for browsers that don't support text gradient
+                        color: '#fb923c',
+                      }}
+                    >
+                      {headline}
+                    </span>
                   </SparklesText>
                 </div>
               ))}
-              {/* Invisible placeholder to maintain height */}
-              <div className="invisible relative">
-                <span className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight">
-                  {headlines[0]}
-                </span>
-              </div>
             </div>
           </div>
           
