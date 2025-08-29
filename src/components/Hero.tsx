@@ -60,6 +60,7 @@ export default function Hero() {
           onClick={() => window.location.reload()}
         />
       </div>
+      <div className="relative z-10 text-center space-y-8 max-w-5xl mx-auto">
         
         {/* Enhanced announcement badge */}
         <div className="inline-flex items-center justify-center">
