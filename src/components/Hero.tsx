@@ -98,7 +98,7 @@ export default function Hero() {
           {/* Main headline with rotating text */}
           <div className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-tight">
             <span className="text-white block mb-2">
-              AI Agent That{' '}
+              Cold AI{' '}
             </span>
             <div className="relative w-full" style={{ minHeight: '2em' }}>
               {headlines.map((headline, index) => (
