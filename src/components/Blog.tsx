@@ -78,21 +78,21 @@ export default function Blog() {
           </div>
 
           {/* LinkedIn Profiles - Stacked Vertically */}
-          <div className="space-y-12">
+          <div className="space-y-8">
             {profiles.map((profile, index) => (
               <div 
                 key={index}
                 className="bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700 p-8 hover:border-orange-500/50 transition-all"
               >
                 {/* Profile Header */}
-                <div className="mb-8 text-center">
+                <div className="mb-6 text-center">
                   <h2 className="text-2xl font-bold text-white mb-2">{profile.name}</h2>
                   <p className="text-orange-400 font-medium mb-3">{profile.role}</p>
                   <p className="text-gray-400 max-w-2xl mx-auto">{profile.description}</p>
                 </div>
 
                 {/* LinkedIn Badge */}
-                <div className="bg-white/5 rounded-xl p-6 mb-8 flex justify-center">
+                <div className="bg-white/5 rounded-xl p-6 flex justify-center">
                   <div 
                     className="LI-profile-badge"
                     data-version="v1" 
@@ -113,20 +113,8 @@ export default function Blog() {
                   </div>
                 </div>
 
-                {/* Embedded LinkedIn Profile */}
-                <div className="bg-white rounded-xl p-4 mb-6">
-                  <iframe
-                    src={`${profile.url}?embed=true`}
-                    width="100%"
-                    height="600"
-                    frameBorder="0"
-                    className="rounded-lg"
-                    title={`${profile.name} LinkedIn Profile`}
-                  />
-                </div>
-
                 {/* View Full Profile Button */}
-                <div className="text-center">
+                <div className="text-center mt-6">
                   <a
                     href={profile.url}
                     target="_blank"
@@ -134,7 +122,7 @@ export default function Blog() {
                     className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-medium rounded-lg transition-all group"
                   >
                     <Linkedin className="w-5 h-5" />
-                    View Full LinkedIn Profile
+                    Connect on LinkedIn
                     <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </a>
                 </div>
