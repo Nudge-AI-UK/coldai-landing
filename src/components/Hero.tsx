@@ -123,7 +123,6 @@ export default function Hero() {
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                         backgroundClip: 'text',
-                        textFillColor: 'transparent',
                         display: 'block',
                         // Fallback for browsers that don't support text gradient
                         color: '#fb923c',
