@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react'
 import { TextAnimate } from './ui/text-animate'
 import { AnimatedGradientText } from './ui/animated-gradient-text'
-import { Ripple } from './ui/ripple'
 import { SparklesText } from './ui/sparkles-text'
-import { Meteors } from './ui/meteors'
-import { FlickeringGrid } from './ui/flickering-grid'
 import { ShimmerButton } from './ui/shimmer-button'
 import { ArrowDown, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { registerInterest } from '@/lib/supabase'
+import { toast } from 'sonner'
 
 export default function Hero() {
   const [headlineIndex, setHeadlineIndex] = useState(0)
+  const [isLoading, setIsLoading] = useState(false)
   
   const headlines = [
     "Sends LinkedIn Messages People Reply To",
@@ -26,30 +26,58 @@ export default function Hero() {
     return () => clearInterval(interval)
   }, [headlines.length])
 
+  const handleRequestAccess = async () => {
+    // First check if there's an email capture form visible
+    const emailSection = document.getElementById('register')
+    if (emailSection) {
+      emailSection.scrollIntoView({ behavior: 'smooth' })
+      return
+    }
+
+    // Otherwise, show a simple prompt for email
+    const email = prompt('Enter your email address to request access:')
+    if (!email) return
+    
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      toast.error('Please enter a valid email address')
+      return
+    }
+
+    setIsLoading(true)
+    try {
+      const result = await registerInterest(email)
+      if (result.success) {
+        toast.success('Thank you! We\'ll be in touch soon.')
+      } else {
+        toast.error(result.error || 'Something went wrong. Please try again.')
+      }
+    } catch (error) {
+      toast.error('Failed to register. Please try again.')
+      console.error('Error registering interest:', error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 sm:px-6">
-      {/* Enhanced background layers */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-orange-950/20 to-black" />
-      
-      {/* Flickering grid for chess board effect */}
-      <FlickeringGrid
-        className="absolute inset-0 z-0"
-        squareSize={32}
-        gridGap={8}
-        color="#ea580c"
-        maxOpacity={0.1}
-        flickerChance={0.02}
-      />
-      
-      {/* Meteors effect */}
-      <Meteors number={10} className="absolute inset-0" />
-      
-      {/* Ripple effect */}
-      <Ripple 
-        className="opacity-5" 
-        mainCircleOpacity={0.08} 
-        numCircles={3}
-      />
+    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 sm:px-6 bg-gray-900">
+      {/* Animated Background - Matching cold-ai-outreach-hub style */}
+      <div className="fixed inset-0 overflow-hidden">
+        <div 
+          className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-orange-500/10 rounded-full blur-3xl animate-pulse"
+          style={{ animationDuration: '6s' }}
+        />
+        <div 
+          className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-3xl animate-pulse"
+          style={{ animationDuration: '8s', animationDelay: '2s' }}
+        />
+        <div 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 bg-purple-500/10 rounded-full blur-3xl animate-pulse"
+          style={{ animationDuration: '7s', animationDelay: '1s' }}
+        />
+      </div>
       
       <div className="absolute top-4 sm:top-6 left-4 sm:left-6 z-20">
         <img 
@@ -132,17 +160,16 @@ export default function Hero() {
         {/* Enhanced CTA section */}
         <div className="pt-12 sm:pt-16 space-y-4 sm:space-y-6">
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <ShimmerButton
-              className="shadow-2xl relative group w-full sm:w-auto max-w-xs sm:max-w-none"
-              background="linear-gradient(110deg,#000103 45%,#ea580c 48%,#fbbf24 52%,#000103 55%)"
-              borderRadius="12px"
-              onClick={() => document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' })}
+            <button
+              onClick={handleRequestAccess}
+              disabled={isLoading}
+              className="relative group px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-semibold text-lg rounded-xl shadow-2xl transform transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto max-w-xs sm:max-w-none"
             >
-              <span className="relative z-10 flex items-center justify-center gap-2 text-white font-semibold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4">
-                Request Access
-                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+              <span className="flex items-center justify-center gap-2">
+                {isLoading ? 'Processing...' : 'Request Access'}
+                {!isLoading && <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />}
               </span>
-            </ShimmerButton>
+            </button>
           </div>
           
           {/* Trust indicators */}
