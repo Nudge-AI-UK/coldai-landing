@@ -1,8 +1,12 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowLeft, Linkedin, ExternalLink } from 'lucide-react'
+import { ArrowLeft, Linkedin, ExternalLink, Eye } from 'lucide-react'
+import Modal from './ui/modal'
 
 export default function Blog() {
+  const [selectedProfile, setSelectedProfile] = useState<any>(null)
+  const [modalOpen, setModalOpen] = useState(false)
+
   useEffect(() => {
     // Load LinkedIn embed script
     const script = document.createElement('script')
@@ -25,33 +29,26 @@ export default function Blog() {
       name: 'Tom Palmer',
       role: 'Co-Founder & CEO',
       url: 'https://www.linkedin.com/in/tom-palmer-gmbpss/',
+      vanity: 'tom-palmer-gmbpss',
       description: 'Leading Cold AI\'s vision for transforming B2B outreach with AI-powered personalisation.'
     },
     {
       name: 'Tom Claydon',
       role: 'Co-Founder & CTO',
       url: 'https://www.linkedin.com/in/tom-claydon-🔭-906809238/',
+      vanity: 'tom-claydon-🔭-906809238',
       description: 'Building the technical infrastructure that powers Cold AI\'s intelligent message generation.'
     }
   ]
 
+  const openProfileModal = (profile: any) => {
+    setSelectedProfile(profile)
+    setModalOpen(true)
+  }
+
   return (
-    <div className="min-h-screen bg-gray-900 relative overflow-hidden">
-      {/* Background - matching Hero component */}
-      <div className="fixed inset-0 overflow-hidden">
-        <div 
-          className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-orange-500/10 rounded-full blur-3xl animate-pulse"
-          style={{ animationDuration: '6s' }}
-        />
-        <div 
-          className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-blue-500/10 rounded-full blur-3xl animate-pulse"
-          style={{ animationDuration: '8s', animationDelay: '2s' }}
-        />
-        <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 bg-purple-500/10 rounded-full blur-3xl animate-pulse"
-          style={{ animationDuration: '7s', animationDelay: '1s' }}
-        />
-      </div>
+    <div className="min-h-screen relative overflow-hidden">
+      {/* No local background needed - using global from App.tsx */}
 
       {/* Header */}
       <header className="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-xl border-b border-gray-700/50">
@@ -105,7 +102,7 @@ export default function Blog() {
                     data-locale="en_US" 
                     data-type="vertical" 
                     data-theme="dark" 
-                    data-vanity={profile.url.split('/in/')[1].replace('/', '')}
+                    data-vanity={profile.vanity}
                   >
                     <a 
                       className="LI-simple-link" 
@@ -118,17 +115,26 @@ export default function Blog() {
                   </div>
                 </div>
 
-                {/* View Full Profile Button */}
-                <a
-                  href={profile.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-medium rounded-lg transition-all group"
-                >
-                  <Linkedin className="w-5 h-5" />
-                  View Full LinkedIn Profile
-                  <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                </a>
+                {/* Action Buttons */}
+                <div className="flex gap-4">
+                  <button
+                    onClick={() => openProfileModal(profile)}
+                    className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-medium rounded-lg transition-all group"
+                  >
+                    <Eye className="w-5 h-5" />
+                    View in Modal
+                  </button>
+                  <a
+                    href={profile.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-medium rounded-lg transition-all group"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                    LinkedIn
+                    <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </a>
+                </div>
               </div>
             ))}
           </div>
@@ -182,6 +188,48 @@ export default function Blog() {
           </div>
         </div>
       </div>
+
+      {/* LinkedIn Profile Modal */}
+      <Modal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        title={selectedProfile ? `${selectedProfile.name} - LinkedIn Profile` : ''}
+      >
+        {selectedProfile && (
+          <div className="space-y-6">
+            <div className="text-center">
+              <h3 className="text-2xl font-bold text-white mb-2">{selectedProfile.name}</h3>
+              <p className="text-orange-400 font-medium mb-4">{selectedProfile.role}</p>
+              <p className="text-gray-400 max-w-2xl mx-auto">{selectedProfile.description}</p>
+            </div>
+            
+            {/* Embedded LinkedIn Profile in Modal */}
+            <div className="bg-white rounded-xl p-8">
+              <iframe
+                src={`${selectedProfile.url}?embed=true`}
+                width="100%"
+                height="600"
+                frameBorder="0"
+                className="rounded-lg"
+                title={`${selectedProfile.name} LinkedIn Profile`}
+              />
+            </div>
+            
+            <div className="text-center">
+              <a
+                href={selectedProfile.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-medium rounded-lg transition-all group"
+              >
+                <Linkedin className="w-5 h-5" />
+                View Full Profile on LinkedIn
+                <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              </a>
+            </div>
+          </div>
+        )}
+      </Modal>
     </div>
   )
 }
