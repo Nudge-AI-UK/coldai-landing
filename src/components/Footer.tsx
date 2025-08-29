@@ -27,36 +27,36 @@ export default function Footer() {
         }} />
       </div>
       
-      <div className="relative z-10 max-w-7xl mx-auto px-4 py-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
         {/* Top section */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center pb-12 border-b border-gray-900">
-          <div className="mb-8 lg:mb-0">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center pb-8 sm:pb-12 border-b border-gray-900 gap-8 lg:gap-0">
+          <div className="w-full lg:w-auto">
             {/* Logo and tagline */}
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-orange-600 to-yellow-600 rounded-xl flex items-center justify-center">
-                <span className="text-2xl font-bold text-white">♗</span>
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-orange-600 to-yellow-600 rounded-xl flex items-center justify-center">
+                <span className="text-lg sm:text-2xl font-bold text-white">♗</span>
               </div>
               <div>
-                <h3 className="text-xl font-bold text-white">Cold AI</h3>
+                <h3 className="text-lg sm:text-xl font-bold text-white">Cold AI</h3>
                 <p className="text-xs text-gray-500">Strategic Outreach</p>
               </div>
             </div>
             
             {/* Newsletter signup */}
-            <div className="max-w-sm">
-              <p className="text-gray-400 mb-4">
+            <div className="max-w-full sm:max-w-sm">
+              <p className="text-sm sm:text-base text-gray-400 mb-4">
                 Stay updated with the latest features and tips.
               </p>
-              <form className="flex gap-2">
+              <form className="flex flex-col sm:flex-row gap-3 sm:gap-2">
                 <input
                   type="email"
                   placeholder="Enter your email"
                   className={cn(
-                    "flex-1 px-4 py-2 rounded-lg",
+                    "flex-1 px-3 sm:px-4 py-2 rounded-lg",
                     "bg-gray-900/50 border border-gray-800",
                     "text-white placeholder-gray-500",
                     "focus:outline-none focus:border-orange-500",
-                    "transition-colors"
+                    "transition-colors text-sm sm:text-base"
                   )}
                 />
                 <button
@@ -66,7 +66,9 @@ export default function Footer() {
                     "bg-orange-600 hover:bg-orange-700",
                     "text-white font-medium",
                     "transition-colors",
-                    "flex items-center gap-1"
+                    "flex items-center justify-center gap-1",
+                    "text-sm sm:text-base",
+                    "w-full sm:w-auto"
                   )}
                 >
                   Subscribe
@@ -77,10 +79,10 @@ export default function Footer() {
           </div>
           
           {/* Navigation grid */}
-          <div className="grid grid-cols-2 gap-8">
+          <div className="grid grid-cols-2 gap-6 sm:gap-8 w-full sm:w-auto">
             {Object.entries(navigation).map(([category, links]) => (
               <div key={category}>
-                <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
+                <h4 className="text-xs sm:text-sm font-semibold text-white uppercase tracking-wider mb-3 sm:mb-4">
                   {category}
                 </h4>
                 <ul className="space-y-2">
@@ -88,7 +90,7 @@ export default function Footer() {
                     <li key={link.name}>
                       <a
                         href={link.href}
-                        className="text-gray-400 hover:text-orange-400 transition-colors text-sm"
+                        className="text-gray-400 hover:text-orange-400 transition-colors text-xs sm:text-sm"
                       >
                         {link.name}
                       </a>
@@ -101,13 +103,13 @@ export default function Footer() {
         </div>
         
         {/* Bottom section */}
-        <div className="pt-8 flex flex-col md:flex-row justify-between items-center">
-          <div className="flex items-center gap-6 mb-4 md:mb-0">
+        <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
+          <div className="flex items-center gap-6 order-2 sm:order-1">
             {/* Social link - LinkedIn only */}
             <a
               href="#"
               className={cn(
-                "w-10 h-10 rounded-lg",
+                "w-9 h-9 sm:w-10 sm:h-10 rounded-lg",
                 "bg-gray-900/50 border border-gray-800",
                 "flex items-center justify-center",
                 "hover:border-orange-500 hover:bg-orange-500/10",
@@ -116,13 +118,13 @@ export default function Footer() {
               )}
               aria-label="LinkedIn"
             >
-              <Linkedin className="w-5 h-5 text-gray-400 group-hover:text-orange-400 transition-colors" />
+              <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-orange-400 transition-colors" />
             </a>
           </div>
           
           {/* Copyright */}
-          <div className="text-center md:text-right">
-            <p className="text-sm text-gray-500">
+          <div className="text-center sm:text-right order-1 sm:order-2">
+            <p className="text-xs sm:text-sm text-gray-500">
               © {new Date().getFullYear()} Cold AI. All rights reserved.
             </p>
             <p className="text-xs text-gray-600 mt-1">
