@@ -84,7 +84,7 @@ export default function Hero() {
         <div className="space-y-6 sm:space-y-8">
           {/* Main headline with rotating text */}
           <div className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-tight">
-            <span className="bg-gradient-to-b from-white via-white to-gray-400 bg-clip-text text-transparent block mb-2">
+            <span className="bg-gradient-to-b from-white via-white to-orange-400 bg-clip-text text-transparent block mb-2">
               AI Agent That{' '}
             </span>
             <div className="relative inline-block min-h-[1.2em] w-full">
