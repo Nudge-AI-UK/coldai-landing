@@ -1,25 +1,26 @@
+import { Link } from 'react-router-dom'
 import { Linkedin, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const navigation = {
   company: [
-    { name: 'Features', href: '#features' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'About', href: '#about' },
-    { name: 'Blog', href: '#blog' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Features', href: '#features', internal: false },
+    { name: 'Pricing', href: '#pricing', internal: false },
+    { name: 'About', href: '#about', internal: false },
+    { name: 'Blog', href: '/blog', internal: true },
+    { name: 'Contact', href: '#contact', internal: false },
   ],
   legal: [
-    { name: 'Privacy', href: '#privacy' },
-    { name: 'Terms', href: '#terms' },
-    { name: 'Cookie Policy', href: '#cookies' },
+    { name: 'Privacy', href: '#privacy', internal: false },
+    { name: 'Terms', href: '#terms', internal: false },
+    { name: 'Cookie Policy', href: '#cookies', internal: false },
   ],
 }
 
 export default function Footer() {
   return (
-    <footer className="relative bg-black border-t border-gray-900">
-      {/* Background pattern */}
+    <footer className="relative border-t border-gray-800">
+      {/* Grid pattern overlay with subtle opacity */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
           backgroundImage: `linear-gradient(#ea580c 1px, transparent 1px), linear-gradient(90deg, #ea580c 1px, transparent 1px)`,
@@ -29,7 +30,7 @@ export default function Footer() {
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
         {/* Top section */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center pb-8 sm:pb-12 border-b border-gray-900 gap-8 lg:gap-0">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center pb-8 sm:pb-12 border-b border-gray-800 gap-8 lg:gap-0">
           <div className="w-full lg:w-auto">
             {/* Logo and tagline */}
             <div className="flex items-center gap-3 mb-4">
@@ -51,7 +52,7 @@ export default function Footer() {
                   placeholder="Enter your email"
                   className={cn(
                     "flex-1 px-3 sm:px-4 py-2 rounded-lg",
-                    "bg-gray-900/50 border border-gray-800",
+                    "bg-gray-900/50 backdrop-blur-sm border border-gray-800",
                     "text-white placeholder-gray-500",
                     "focus:outline-none focus:border-orange-500",
                     "transition-colors text-sm sm:text-base"
@@ -59,18 +60,10 @@ export default function Footer() {
                 />
                 <button
                   type="submit"
-                  className={cn(
-                    "px-4 py-2 rounded-lg",
-                    "bg-orange-600 hover:bg-orange-700",
-                    "text-white font-medium",
-                    "transition-colors",
-                    "flex items-center justify-center gap-1",
-                    "text-sm sm:text-base",
-                    "w-full sm:w-auto"
-                  )}
+                  className="group px-6 py-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-semibold rounded-lg shadow-xl transform transition-all duration-200 hover:scale-105 flex items-center justify-center gap-2"
                 >
                   Subscribe
-                  <ChevronRight className="w-4 h-4" />
+                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </form>
             </div>
@@ -86,12 +79,21 @@ export default function Footer() {
                 <ul className="space-y-2">
                   {links.map((link) => (
                     <li key={link.name}>
-                      <a
-                        href={link.href}
-                        className="text-gray-400 hover:text-orange-400 transition-colors text-xs sm:text-sm"
-                      >
-                        {link.name}
-                      </a>
+                      {link.internal ? (
+                        <Link
+                          to={link.href}
+                          className="text-gray-400 hover:text-orange-400 transition-colors text-xs sm:text-sm"
+                        >
+                          {link.name}
+                        </Link>
+                      ) : (
+                        <a
+                          href={link.href}
+                          className="text-gray-400 hover:text-orange-400 transition-colors text-xs sm:text-sm"
+                        >
+                          {link.name}
+                        </a>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -105,10 +107,12 @@ export default function Footer() {
           <div className="flex items-center gap-6 order-2 sm:order-1">
             {/* Social link - LinkedIn only */}
             <a
-              href="#"
+              href="https://www.linkedin.com/company/cold-ai"
+              target="_blank"
+              rel="noopener noreferrer"
               className={cn(
                 "w-9 h-9 sm:w-10 sm:h-10 rounded-lg",
-                "bg-gray-900/50 border border-gray-800",
+                "bg-gray-900/50 backdrop-blur-sm border border-gray-800",
                 "flex items-center justify-center",
                 "hover:border-orange-500 hover:bg-orange-500/10",
                 "transition-all duration-300",

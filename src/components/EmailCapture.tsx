@@ -2,10 +2,9 @@ import { useState } from 'react'
 import { toast } from 'sonner'
 import { supabase } from '@/lib/supabase'
 import { TextAnimate } from './ui/text-animate'
-import { ShimmerButton } from './ui/shimmer-button'
 import { BorderBeam } from './ui/border-beam'
 import { SparklesText } from './ui/sparkles-text'
-import { Send, CheckCircle, AlertCircle } from 'lucide-react'
+import { CheckCircle, AlertCircle, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export default function EmailCapture() {
@@ -59,16 +58,23 @@ export default function EmailCapture() {
 
   return (
     <section id="register" className="relative py-32 px-4 overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-orange-950/20 to-black" />
-      
-      {/* Animated grid pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(#ea580c 1px, transparent 1px), linear-gradient(90deg, #ea580c 1px, transparent 1px)`,
-          backgroundSize: '50px 50px',
-          animation: 'grid 20s linear infinite',
-        }} />
+      {/* Animated grid pattern overlay with edge fade */}
+      <div className="absolute inset-0 z-[1]">
+        {/* Grid pattern with radial fade */}
+        <div 
+          className="absolute inset-0" 
+          style={{
+            backgroundImage: `
+              radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.8) 70%, rgba(0,0,0,1) 100%),
+              linear-gradient(#ea580c 1px, transparent 1px), 
+              linear-gradient(90deg, #ea580c 1px, transparent 1px)
+            `,
+            backgroundSize: '100% 100%, 50px 50px, 50px 50px',
+            backgroundPosition: 'center, 0 0, 0 0',
+            animation: 'grid 20s linear infinite',
+            opacity: 0.1,
+          }} 
+        />
       </div>
       
       <div className="relative z-10 max-w-4xl mx-auto">
@@ -134,24 +140,22 @@ export default function EmailCapture() {
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-600/20 to-yellow-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                   </div>
                   
-                  <ShimmerButton
+                  <button
                     type="submit"
                     disabled={loading}
-                    className="w-full shadow-2xl"
-                    background="linear-gradient(110deg,#000103 45%,#ea580c 48%,#fbbf24 52%,#000103 55%)"
-                    borderRadius="12px"
+                    className="w-full relative group px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-semibold text-lg rounded-xl shadow-2xl transform transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <span className="relative z-10 flex items-center justify-center gap-2 text-white font-semibold text-lg px-8 py-4">
+                    <span className="flex items-center justify-center gap-2">
                       {loading ? (
                         <span className="animate-pulse">Joining...</span>
                       ) : (
                         <>
                           Request Access
-                          <Send className="w-5 h-5" />
+                          <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </>
                       )}
                     </span>
-                  </ShimmerButton>
+                  </button>
                 </form>
               ) : (
                 <div className="space-y-6 max-w-md mx-auto">

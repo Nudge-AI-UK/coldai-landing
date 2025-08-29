@@ -65,8 +65,7 @@ const features = [
 export default function Features() {
   return (
     <section id="features" className="relative py-32 px-4 overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-orange-950/10 to-black" />
+      {/* No local background - using global background from App.tsx */}
       
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section header */}
