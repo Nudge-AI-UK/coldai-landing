@@ -1,18 +1,19 @@
+import { Link } from 'react-router-dom'
 import { Linkedin, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const navigation = {
   company: [
-    { name: 'Features', href: '#features' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'About', href: '#about' },
-    { name: 'Blog', href: '#blog' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Features', href: '#features', internal: false },
+    { name: 'Pricing', href: '#pricing', internal: false },
+    { name: 'About', href: '#about', internal: false },
+    { name: 'Blog', href: '/blog', internal: true },
+    { name: 'Contact', href: '#contact', internal: false },
   ],
   legal: [
-    { name: 'Privacy', href: '#privacy' },
-    { name: 'Terms', href: '#terms' },
-    { name: 'Cookie Policy', href: '#cookies' },
+    { name: 'Privacy', href: '#privacy', internal: false },
+    { name: 'Terms', href: '#terms', internal: false },
+    { name: 'Cookie Policy', href: '#cookies', internal: false },
   ],
 }
 
@@ -86,12 +87,21 @@ export default function Footer() {
                 <ul className="space-y-2">
                   {links.map((link) => (
                     <li key={link.name}>
-                      <a
-                        href={link.href}
-                        className="text-gray-400 hover:text-orange-400 transition-colors text-xs sm:text-sm"
-                      >
-                        {link.name}
-                      </a>
+                      {link.internal ? (
+                        <Link
+                          to={link.href}
+                          className="text-gray-400 hover:text-orange-400 transition-colors text-xs sm:text-sm"
+                        >
+                          {link.name}
+                        </Link>
+                      ) : (
+                        <a
+                          href={link.href}
+                          className="text-gray-400 hover:text-orange-400 transition-colors text-xs sm:text-sm"
+                        >
+                          {link.name}
+                        </a>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -105,7 +115,9 @@ export default function Footer() {
           <div className="flex items-center gap-6 order-2 sm:order-1">
             {/* Social link - LinkedIn only */}
             <a
-              href="#"
+              href="https://www.linkedin.com/company/cold-ai"
+              target="_blank"
+              rel="noopener noreferrer"
               className={cn(
                 "w-9 h-9 sm:w-10 sm:h-10 rounded-lg",
                 "bg-gray-900/50 border border-gray-800",
