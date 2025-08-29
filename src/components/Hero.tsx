@@ -52,13 +52,14 @@ export default function Hero() {
         numCircles={3}
       />
       
-      {/* Logo in top left */}
-      <div className="absolute top-8 left-8 z-20">
+      {/* Logo in top left corner */}
+      <div className="absolute top-6 left-6 z-20">    
         <img 
-          src="/logo.svg" 
-          alt="Cold AI Logo" 
-          className="h-10 w-auto hover:opacity-90 transition-opacity cursor-pointer"
-        />
+          src="/Cold_AI_Logo_Square_Transparent.png"  // or .svg depending on your file   
+          alt="Cold AI"
+          className="h-8 md:h-10 w-auto hover:scale-105 transition-transform cursor-pointer"   
+          onClick={() => window.location.reload()}   
+        />    
       </div>
       
       <div className="relative z-10 text-center space-y-8 max-w-5xl mx-auto">
@@ -137,9 +138,9 @@ export default function Hero() {
           <div className="max-w-3xl mx-auto">
             <TextAnimate
               animation="fadeIn"
-              by="text"
+              by="word"  // ✅ This allows wrapping between words
               delay={0.8}
-              className="text-xl md:text-2xl text-gray-300 leading-relaxed font-light text-center block"
+              className="text-xl md:text-2xl text-gray-300 leading-relaxed font-light text-center"
             >
               Cold AI Agent sends personalised outreach that sparks conversations and wins meetings.
             </TextAnimate>
