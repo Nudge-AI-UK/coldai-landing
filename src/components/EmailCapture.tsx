@@ -58,16 +58,21 @@ export default function EmailCapture() {
 
   return (
     <section id="register" className="relative py-32 px-4 overflow-hidden">
-      {/* Animated grid pattern overlay with fade out effect */}
+      {/* Animated grid pattern overlay with edge fade */}
       <div className="absolute inset-0 z-[1]">
+        {/* Grid pattern with radial fade */}
         <div 
           className="absolute inset-0" 
           style={{
-            backgroundImage: `linear-gradient(#ea580c 1px, transparent 1px), linear-gradient(90deg, #ea580c 1px, transparent 1px)`,
-            backgroundSize: '50px 50px',
+            backgroundImage: `
+              radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.8) 70%, rgba(0,0,0,1) 100%),
+              linear-gradient(#ea580c 1px, transparent 1px), 
+              linear-gradient(90deg, #ea580c 1px, transparent 1px)
+            `,
+            backgroundSize: '100% 100%, 50px 50px, 50px 50px',
+            backgroundPosition: 'center, 0 0, 0 0',
             animation: 'grid 20s linear infinite',
-            mask: 'linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0) 100%)',
-            WebkitMask: 'linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0) 100%)',
+            opacity: 0.1,
           }} 
         />
       </div>
