@@ -44,9 +44,11 @@ async function sendToN8nWorkflow(data: {
     if (!response.ok) {
       console.error('N8N webhook failed:', response.status, response.statusText)
       // Don't throw - we still want to save to Supabase even if n8n fails
+    } else {
+      console.log('Successfully sent to n8n workflow')
     }
 
-    return { success: true }
+    return { success: response.ok }
   } catch (error) {
     console.error('Error sending to n8n workflow:', error)
     // Don't throw - we still want to save to Supabase even if n8n fails
@@ -92,4 +94,57 @@ export async function registerInterest(email: string): Promise<{ success: boolea
     console.error('Error registering interest:', error)
     return { success: false, error: 'Failed to register interest. Please try again.' }
   }
+}
+
+// Test function for debugging n8n connection
+export async function testN8nConnection(): Promise<{ success: boolean; message: string }> {
+  if (!n8nWebhookUrl) {
+    return { 
+      success: false, 
+      message: 'N8N webhook URL not configured. Please set VITE_N8N_WEBHOOK_URL in your .env file' 
+    }
+  }
+
+  try {
+    const testData = {
+      email: 'test@example.com',
+      source: 'coldai.uk',
+      user_agent: 'Test User Agent',
+      referrer: null,
+      timestamp: new Date().toISOString(),
+      event: 'test_connection',
+      environment: import.meta.env.MODE || 'development'
+    }
+
+    const response = await fetch(n8nWebhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(testData),
+    })
+
+    if (response.ok) {
+      return { 
+        success: true, 
+        message: `N8N connection successful! Webhook URL: ${n8nWebhookUrl}` 
+      }
+    } else {
+      return { 
+        success: false, 
+        message: `N8N webhook returned error: ${response.status} ${response.statusText}` 
+      }
+    }
+  } catch (error) {
+    return { 
+      success: false, 
+      message: `Failed to connect to n8n: ${error instanceof Error ? error.message : 'Unknown error'}` 
+    }
+  }
+}
+
+// Expose test function to window for debugging
+if (import.meta.env.DEV) {
+  (window as any).testN8nConnection = testN8nConnection
+  console.log('🔧 Debug: Run testN8nConnection() in console to test n8n webhook')
 }
