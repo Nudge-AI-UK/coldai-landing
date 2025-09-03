@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { toast } from 'sonner'
-import { supabase } from '@/lib/supabase'
+import { registerInterest } from '@/lib/supabase'
 import { TextAnimate } from './ui/text-animate'
 import { BorderBeam } from './ui/border-beam'
 import { SparklesText } from './ui/sparkles-text'
@@ -30,23 +30,18 @@ export default function EmailCapture() {
     setLoading(true)
 
     try {
-      const { error } = await supabase
-        .from('waitlist')
-        .insert([{ 
-          email,
-          created_at: new Date().toISOString()
-        }])
+      const result = await registerInterest(email)
 
-      if (error) {
-        if (error.code === '23505') {
-          toast.error('You\'re already on the waitlist!')
-        } else {
-          throw error
-        }
-      } else {
+      if (result.success) {
         setSubmitted(true)
         toast.success('Welcome to Cold AI! Check your email for next steps.')
         setEmail('')
+      } else {
+        if (result.error === 'This email is already registered') {
+          toast.error('You\'re already on the waitlist!')
+        } else {
+          toast.error(result.error || 'Something went wrong. Please try again.')
+        }
       }
     } catch (error) {
       console.error('Error:', error)

@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import { TextAnimate } from './ui/text-animate'
 import { AnimatedGradientText } from './ui/animated-gradient-text'
 import { SparklesText } from './ui/sparkles-text'
-import { ArrowDown, ChevronRight } from 'lucide-react'
+import { ShimmerButton } from './ui/shimmer-button'
+import { ArrowDown, ChevronRight, Sparkles } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { registerInterest } from '@/lib/supabase'
 import { toast } from 'sonner'
@@ -149,30 +150,55 @@ export default function Hero() {
           </div>
         </div>
         
-        {/* Enhanced CTA section */}
+        {/* Enhanced CTA section with bigger, more prominent button */}
         <div className="pt-12 sm:pt-16 space-y-4 sm:space-y-6">
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button
-              onClick={handleRequestAccess}
-              disabled={isLoading}
-              className="relative group px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-semibold text-lg rounded-xl shadow-2xl transform transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto max-w-xs sm:max-w-none"
-            >
-              <span className="flex items-center justify-center gap-2">
-                {isLoading ? 'Processing...' : 'Request Access'}
-                {!isLoading && <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />}
-              </span>
-            </button>
+            <div className="relative group">
+              {/* Animated glow behind button */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-orange-600 to-amber-600 rounded-2xl blur-lg opacity-60 group-hover:opacity-100 animate-pulse transition duration-200" />
+              
+              {/* Main button with shimmer effect */}
+              <ShimmerButton
+                onClick={handleRequestAccess}
+                disabled={isLoading}
+                shimmerColor="#fbbf24"
+                shimmerSize="0.1em"
+                shimmerDuration="2s"
+                background="linear-gradient(135deg, #ea580c 0%, #f59e0b 50%, #fbbf24 100%)"
+                borderRadius="16px"
+                className="relative px-10 sm:px-12 py-5 sm:py-6 text-white font-bold text-xl sm:text-2xl rounded-2xl transform transition-all duration-300 hover:scale-110 active:scale-105 disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto min-w-[280px] sm:min-w-[320px] shadow-2xl hover:shadow-orange-500/50"
+              >
+                <span className="relative flex items-center justify-center gap-3">
+                  {!isLoading && <Sparkles className="w-6 h-6 animate-pulse" />}
+                  <span className="tracking-wide">
+                    {isLoading ? 'Processing...' : 'Request Free Access'}
+                  </span>
+                  {!isLoading && (
+                    <ChevronRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
+                  )}
+                </span>
+                
+                {/* Extra shine overlay */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-transparent via-white/10 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </ShimmerButton>
+            </div>
           </div>
           
-          {/* Trust indicators */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-gray-500">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              <span>No Credit Card Required</span>
+          {/* Enhanced trust indicators with subtle animations */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-gray-400">
+            <div className="flex items-center gap-2 group">
+              <div className="relative">
+                <div className="absolute inset-0 bg-green-500 rounded-full blur animate-pulse" />
+                <div className="relative w-2.5 h-2.5 bg-green-500 rounded-full" />
+              </div>
+              <span className="group-hover:text-gray-300 transition-colors">No Credit Card Required</span>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              <span>Join The Beta</span>
+            <div className="flex items-center gap-2 group">
+              <div className="relative">
+                <div className="absolute inset-0 bg-green-500 rounded-full blur animate-pulse" />
+                <div className="relative w-2.5 h-2.5 bg-green-500 rounded-full" />
+              </div>
+              <span className="group-hover:text-gray-300 transition-colors">Join The Beta</span>
             </div>
           </div>
         </div>
