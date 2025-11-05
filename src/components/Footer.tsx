@@ -11,8 +11,8 @@ const navigation = {
     { name: 'Contact', href: '#contact', internal: false },
   ],
   legal: [
-    { name: 'Privacy', href: '#privacy', internal: false },
-    { name: 'Terms', href: '#terms', internal: false },
+    { name: 'Privacy', href: '/privacy', internal: true },
+    { name: 'Terms', href: '/terms', internal: true },
     { name: 'Cookie Policy', href: '#cookies', internal: false },
   ],
 }
